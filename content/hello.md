@@ -1,9 +1,11 @@
-Title: My super title
-Date: 2010-12-03 10:20
-Category: Python
-Tags: pelican, publishing
-Slug: my-super-post
-Author: Alexis Metaireau
-Summary: Short version for index and feeds
+Title: Hello, World!
+Date: 2014-08-22 10:20
+Category: 博客
+Tags: 
+Slug: helloworld
+Author: Yingcai FENG
+Summary: Hello, world!
 
-This is the content of my super blog post.
+是的，按照惯例，这是一个 Hello, world!
+
+仅作为在 github 上的第一篇文章。
