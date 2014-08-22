@@ -8,7 +8,7 @@ SITEURL = u'http://fengyc.github.io'
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'Asia/Shanghai'
 
 DEFAULT_LANG = u'zh'
 
