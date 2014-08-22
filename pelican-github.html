@@ -2,7 +2,7 @@
 <html lang="zh"
 >
 <head>
-    <title>Hello, World! - Zenmass</title>
+    <title>利用pelican在github上搭建博客的办法 - Zenmass</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,11 +10,11 @@
 
 
 
-<link rel="canonical" href="http://fengyc.github.io/helloworld.html">
+<link rel="canonical" href="http://fengyc.github.io/pelican-github.html">
 
         <meta name="author" content="Yingcai FENG" />
-        <meta name="keywords" content="" />
-        <meta name="description" content="Hello, world!" />
+        <meta name="keywords" content="github" />
+        <meta name="description" content="pelican github" />
 
 
 
@@ -63,10 +63,10 @@ Zenmass            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://fengyc.github.io/helloworld.html"
+                    <a href="http://fengyc.github.io/pelican-github.html"
                        rel="bookmark"
-                       title="Permalink to Hello, World!">
-                        Hello, World!
+                       title="Permalink to 利用pelican在github上搭建博客的办法">
+                        利用pelican在github上搭建博客的办法
                     </a>
                 </h1>
             </header>
@@ -76,18 +76,69 @@ Zenmass            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2014-08-22T10:20:00"> 五 22 八月 2014</time>
+        <i class="fa fa-calendar"></i><time datetime="2014-08-22T20:20:00"> 五 22 八月 2014</time>
     </span>
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://fengyc.github.io/tag/.html"></a>
+	<a href="http://fengyc.github.io/tag/github.html">github</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>是的，按照惯例，这是一个 Hello, world!</p>
-<p>仅作为在 github 上的第一篇文章。</p>
+                <h1>简介</h1>
+<p>这是在ubuntu 14.04下，使用pelican和github搭建博客的过程</p>
+<h1>github博客项目</h1>
+<p>在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
+<pre>
+https://github.com/abc/abc.github.io
+</pre></p>
+<h1>安装</h1>
+<h2>安装准备环境</h2>
+<p># apt-get install -y --force-yes python-pip python-dev virtualenv</p>
+<h2>把项目clone到本地</h2>
+<p>git clone https://github.com/abc/abc.github.io</p>
+<h2>建立virtualenv环境</h2>
+<p><pre>
+cd abc.github.io
+mkdir .env
+virtualenv .env
+source .env/bin/activate
+</pre></p>
+<h2>安装pelican和Markdown</h2>
+<p><pre>
+pip install pelican
+pip install Markdown
+</pre></p>
+<h2>建立源分支</h2>
+<p><pre>
+git checkout -b source
+pelican-quickstart
+</pre>
+根据自己的实际环境选择向导中的变量</p>
+<h2>编写第一个页面</h2>
+<p>vi content/hello.md
+用markdown语法编写一个页面，如(<a href="http://docs.getpelican.com/en/3.3.0/getting_started.html#writing-content-using-pelican">http://docs.getpelican.com/en/3.3.0/getting_started.html</a>)：
+<pre>
+Title: My super title
+Date: 2010-12-03 10:20
+Category: Python
+Tags: pelican, publishing
+Slug: my-super-post
+Author: Alexis Metaireau
+Summary: Short version for index and feeds</p>
+<p>This is the content of my super blog post.
+</pre></p>
+<h2>编译并发布</h2>
+<p><pre>
+make html
+pip install ghp-import
+git branch gp-pages
+ghp-import output
+git checkout master
+git merge gh-pages
+git push --all
+</pre></p>
             </div>
             <!-- /.entry-content -->
         </article>

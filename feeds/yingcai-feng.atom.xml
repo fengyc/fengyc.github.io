@@ -1,3 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/yingcai-feng.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-22T10:20:00+08:00</updated><entry><title>Hello, World!</title><link href="http://fengyc.github.io/helloworld.html" rel="alternate"></link><updated>2014-08-22T10:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:helloworld.html</id><summary type="html">&lt;p&gt;是的，按照惯例，这是一个 Hello, world!&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/yingcai-feng.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-22T20:20:00+08:00</updated><entry><title>利用pelican在github上搭建博客的办法</title><link href="http://fengyc.github.io/pelican-github.html" rel="alternate"></link><updated>2014-08-22T20:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:pelican-github.html</id><summary type="html">&lt;h1&gt;简介&lt;/h1&gt;
+&lt;p&gt;这是在ubuntu 14.04下，使用pelican和github搭建博客的过程&lt;/p&gt;
+&lt;h1&gt;github博客项目&lt;/h1&gt;
+&lt;p&gt;在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
+&lt;pre&gt;
+https://github.com/abc/abc.github.io
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h1&gt;安装&lt;/h1&gt;
+&lt;h2&gt;安装准备环境&lt;/h2&gt;
+&lt;p&gt;# apt-get install -y --force-yes python-pip python-dev virtualenv&lt;/p&gt;
+&lt;h2&gt;把项目clone到本地&lt;/h2&gt;
+&lt;p&gt;git clone https://github.com/abc/abc.github.io&lt;/p&gt;
+&lt;h2&gt;建立virtualenv环境&lt;/h2&gt;
+&lt;p&gt;&lt;pre&gt;
+cd abc.github.io
+mkdir .env
+virtualenv .env
+source .env/bin/activate
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;安装pelican和Markdown&lt;/h2&gt;
+&lt;p&gt;&lt;pre&gt;
+pip install pelican
+pip install Markdown
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;建立源分支&lt;/h2&gt;
+&lt;p&gt;&lt;pre&gt;
+git checkout -b source
+pelican-quickstart
+&lt;/pre&gt;
+根据自己的实际环境选择向导中的变量&lt;/p&gt;
+&lt;h2&gt;编写第一个页面&lt;/h2&gt;
+&lt;p&gt;vi content/hello.md
+用markdown语法编写一个页面，如(&lt;a href="http://docs.getpelican.com/en/3.3.0/getting_started.html#writing-content-using-pelican"&gt;http://docs.getpelican.com/en/3.3.0/getting_started.html&lt;/a&gt;)：
+&lt;pre&gt;
+Title: My super title
+Date: 2010-12-03 10:20
+Category: Python
+Tags: pelican, publishing
+Slug: my-super-post
+Author: Alexis Metaireau
+Summary: Short version for index and feeds&lt;/p&gt;
+&lt;p&gt;This is the content of my super blog post.
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;编译并发布&lt;/h2&gt;
+&lt;p&gt;&lt;pre&gt;
+make html
+pip install ghp-import
+git branch gp-pages
+ghp-import output
+git checkout master
+git merge gh-pages
+git push --all
+&lt;/pre&gt;&lt;/p&gt;</summary><category term="github"></category></entry><entry><title>Hello, World!</title><link href="http://fengyc.github.io/helloworld.html" rel="alternate"></link><updated>2014-08-22T10:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:helloworld.html</id><summary type="html">&lt;p&gt;是的，按照惯例，这是一个 Hello, world!&lt;/p&gt;
 &lt;p&gt;仅作为在 github 上的第一篇文章。&lt;/p&gt;</summary><category term=""></category></entry></feed>
