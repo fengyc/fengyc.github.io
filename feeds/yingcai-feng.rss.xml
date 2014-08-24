@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 22 Aug 2014 20:20:00 +0800</lastBuildDate><item><title>利用pelican在github上搭建博客的办法</title><link>http://fengyc.github.io/pelican-github.html</link><description>&lt;h1&gt;简介&lt;/h1&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 24 Aug 2014 17:40:00 +0800</lastBuildDate><item><title>如何查看git本地仓库对应的远程仓库</title><link>http://fengyc.github.io/git-check-remote.html</link><description>&lt;p&gt;当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：
+    git remove -v&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sun, 24 Aug 2014 17:40:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-24:git-check-remote.html</guid><category>git</category></item><item><title>利用pelican在github上搭建博客的办法</title><link>http://fengyc.github.io/pelican-github.html</link><description>&lt;h1&gt;简介&lt;/h1&gt;
 &lt;p&gt;这是在ubuntu 14.04下，使用pelican和github搭建博客的过程&lt;/p&gt;
 &lt;h1&gt;github博客项目&lt;/h1&gt;
 &lt;p&gt;在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
