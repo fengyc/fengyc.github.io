@@ -21,4 +21,4 @@ DELETE_OUTPUT_DIRECTORY = True
 # Following items are often useful when publishing
 
 DISQUS_SITENAME = "zenmass"
-#GOOGLE_ANALYTICS = ""
+GOOGLE_ANALYTICS = "UA-54175787-1"

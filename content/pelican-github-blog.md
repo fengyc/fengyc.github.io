@@ -20,7 +20,7 @@ pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语�
 
 # 安装
 ## 安装准备环境
-    \# apt-get install -y --force-yes git python-pip python-dev virtualenv
+    apt-get install -y --force-yes git python-pip python-dev virtualenv
 ## 把项目clone到本地
     mkdir blog
     cd blog
@@ -32,7 +32,7 @@ pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语�
     virtualenv .env
     source .env/bin/activate #激活virtualenv环境
 ## 安装pelican和Markdown
-    # 在激活了virtualenv的前提下安装，避免污染python环境
+在激活了virtualenv的前提下安装，避免污染python环境
     pip install pelican
     pip install Markdown
 ## 建立源分支
@@ -68,7 +68,13 @@ pelican提供了很多的主题供用户使用，首先把主题下载到本地�
     cd pelican-themes
     pelican-themes -i gum
 ## 增加DISQUS作为讨论组
-    先到DISQUS申请一个账号，并建立一个讨论组
-    sed -i "s/.*DISQUS_SITENAME.*=.*/DISQUS_SITENAME=zenmass/g" publishconf.py
+先到DISQUS[disqus]申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：
+    DISQUS_SITENAME=zenmass
+## 使用google analytics[google-analytics]
+申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：
+    GOOGLE_ANALYTICS=
 
 [pelican-getting_started]: http://docs.getpelican.com/en/3.3.0/getting_started.html "pelican参考页面"
+[disqus]: http://disqus.com/ "DISQUS申请"
+[google-analytics]: http://www.google.cn/intl/zh-CN/analytics/ "Google Analytics申请"
+
