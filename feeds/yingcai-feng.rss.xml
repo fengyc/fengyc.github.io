@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 26 Aug 2014 14:12:00 +0800</lastBuildDate><item><title>git常用命令</title><link>http://fengyc.github.io/git-commands.html</link><description>&lt;h1&gt;下载远程仓库&lt;/h1&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 26 Aug 2014 20:13:00 +0800</lastBuildDate><item><title>关于</title><link>http://fengyc.github.io/about.html</link><description>&lt;h1&gt;关于&lt;/h1&gt;
+&lt;p&gt;先空着&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Tue, 26 Aug 2014 20:13:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-26:about.html</guid><category>about</category></item><item><title>git常用命令</title><link>http://fengyc.github.io/git-commands.html</link><description>&lt;h1&gt;下载远程仓库&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
