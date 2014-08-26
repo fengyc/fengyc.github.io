@@ -4,7 +4,5 @@ Category: blog
 Tags: about 
 Slug: about
 Author: Yingcai FENG
-Summary: about
 
-# 关于
 先空着

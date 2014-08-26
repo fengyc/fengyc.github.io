@@ -5,7 +5,9 @@ Category: blog
 Tags: github
 Slug: pelican-github-blog
 Author: Yingcai FENG
-Summary: pelican github
+
+本文章介绍使用pelican和github建立个人博客的过程。
+<!-- PELICAN_END_SUMMARY -->
 
 # 简介
 发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。
@@ -68,9 +70,9 @@ pelican提供了很多的主题供用户使用，首先把主题下载到本地�
     cd pelican-themes
     pelican-themes -i gum
 ## 增加DISQUS作为讨论组
-先到DISQUS[disqus]申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：
+先到DISQUS([disqus])申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：
     DISQUS_SITENAME=zenmass
-## 使用google analytics[google-analytics]
+## 使用google analytics([google-analytics])
 申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：
     GOOGLE_ANALYTICS=
 

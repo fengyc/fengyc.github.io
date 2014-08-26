@@ -4,7 +4,9 @@ Category: blog
 Tags: git
 Slug: git-commands
 Author: Yingcai FENG
-Summary: git commands
+
+本文章记录了git的日常使用中的常用命令。
+<!-- PELICAN_END_SUMMARY -->
 
 # 下载远程仓库
     git clone <URL>

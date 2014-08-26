@@ -4,8 +4,8 @@ Category: blog
 Tags: blog 
 Slug: helloworld
 Author: Yingcai FENG
-Summary: Hello, world!
+Summary: 这个一个Hello, world!
 
-是的，按照惯例，这是一个 Hello, world!
+是的，按照惯例，这是一个Hello, world!
 
 仅作为在 github 上的第一篇文章。
