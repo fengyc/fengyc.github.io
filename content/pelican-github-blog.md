@@ -1,6 +1,6 @@
 Title: 利用pelican在github上搭建博客的办法
 Date: 2014-08-22 20:20
-Updated: 2014-08-26 14:12
+Modified: 2014-08-26 14:12
 Category: 博客
 Tags: github
 Slug: pelican-github-blog
