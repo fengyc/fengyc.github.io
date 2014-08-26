@@ -1,6 +1,6 @@
 Title: git常用命令
 Date: 2014-08-24 17:40
-Category: 博客
+Category: blog
 Tags: git
 Slug: git-commands
 Author: Yingcai FENG

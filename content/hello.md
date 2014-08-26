@@ -1,7 +1,7 @@
 Title: Hello, World!
 Date: 2014-08-22 10:20
-Category: 博客
-Tags: 
+Category: blog
+Tags: blog 
 Slug: helloworld
 Author: Yingcai FENG
 Summary: Hello, world!
