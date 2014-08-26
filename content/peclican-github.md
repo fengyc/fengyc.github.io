@@ -1,5 +1,6 @@
 Title: 利用pelican在github上搭建博客的办法
 Date: 2014-08-22 20:20
+Updated: 2014-08-26 14:12
 Category: 博客
 Tags: github
 Slug: pelican-github
@@ -7,58 +8,67 @@ Author: Yingcai FENG
 Summary: pelican github
 
 # 简介
-这是在ubuntu 14.04下，使用pelican和github搭建博客的过程
-# github博客项目
+发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。
+
+pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)
+
+这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。
+
+# 在github上建立博客项目
 在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
-<pre>
-https://github.com/abc/abc.github.io
-</pre>
+    https://github.com/abc/fengyc.github.io
 
 # 安装
 ## 安装准备环境
-\# apt-get install -y --force-yes python-pip python-dev virtualenv
+    \# apt-get install -y --force-yes git python-pip python-dev virtualenv
 ## 把项目clone到本地
-git clone https://github.com/abc/abc.github.io
+    mkdir blog
+    cd blog
+    git init
+    git remote add origin https://github.com/fengyc.github.io.git
+    git fetch
 ## 建立virtualenv环境
-<pre>
-cd abc.github.io
-mkdir .env
-virtualenv .env
-source .env/bin/activate
-</pre>
+    mkdir .env
+    virtualenv .env
+    source .env/bin/activate #激活virtualenv环境
 ## 安装pelican和Markdown
-<pre>
-pip install pelican
-pip install Markdown
-</pre>
+    # 在激活了virtualenv的前提下安装，避免污染python环境
+    pip install pelican
+    pip install Markdown
 ## 建立源分支
-<pre>
-git checkout -b source
-pelican-quickstart
-</pre>
-根据自己的实际环境选择向导中的变量
+    git checkout -b source
+    pelican-quickstart
+请根据自己的实际环境选择向导中的变量
 ## 编写第一个页面
-vi content/hello.md
-用markdown语法编写一个页面，如(<a href="http://docs.getpelican.com/en/3.3.0/getting_started.html#writing-content-using-pelican">http://docs.getpelican.com/en/3.3.0/getting_started.html</a>)：
-<pre>
-Title: My super title
-Date: 2010-12-03 10:20
-Category: Python
-Tags: pelican, publishing
-Slug: my-super-post
-Author: Alexis Metaireau
-Summary: Short version for index and feeds
+    vi content/hello.md
+用markdown语法编写一个页面，如([pelican-getting_started])：
+    Title: My super title
+    Date: 2010-12-03 10:20
+    Category: Python
+    Tags: pelican, publishing
+    Slug: my-super-post
+    Author: Alexis Metaireau
+    Summary: Short version for index and feeds
 
-This is the content of my super blog post.
-</pre>
+    This is the content of my super blog post.
 ## 编译并发布
-<pre>
-make html
-pip install ghp-import
-git branch gp-pages
-ghp-import output
-git checkout master
-git merge gh-pages
-git push --all
-</pre>
+    make html
+    pip install ghp-import
+    git branch gp-pages
+    ghp-import output
+    git checkout master
+    git merge gh-pages
+    git push --all
 
+# 其它
+## pelican主题
+pelican提供了很多的主题供用户使用，首先把主题下载到本地：
+    git clone https://github.com/getpelican/pelican-themes.git
+然后，进入到主题目录中，安装主题
+    cd pelican-themes
+    pelican-themes -i gum
+## 增加DISQUS作为讨论组
+    先到DISQUS申请一个账号，并建立一个讨论组
+    sed -i "s/.*DISQUS_SITENAME.*=.*/DISQUS_SITENAME=zenmass/g" publishconf.py
+
+[pelican-getting_started]: http://docs.getpelican.com/en/3.3.0/getting_started.html "pelican参考页面"
