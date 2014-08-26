@@ -3,7 +3,7 @@ Date: 2014-08-22 20:20
 Updated: 2014-08-26 14:12
 Category: 博客
 Tags: github
-Slug: pelican-github
+Slug: pelican-github-blog
 Author: Yingcai FENG
 Summary: pelican github
 
