@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>利用pelican在github上搭建博客的办法</title>
         <link rel="stylesheet" href="http://fengyc.github.io/theme/css/main.css" />
+        <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Atom Feed" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,7 +22,7 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="http://fengyc.github.io/pelican-github.html" rel="bookmark"
+        <a href="http://fengyc.github.io/pelican-github-blog.html" rel="bookmark"
            title="Permalink to 利用pelican在github上搭建博客的办法">利用pelican在github上搭建博客的办法</a></h1>
     </header>
 
@@ -119,10 +120,32 @@
 <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s">&quot;s/.*DISQUS_SITENAME.*=.*/DISQUS_SITENAME=zenmass/g&quot;</span> <span class="n">publishconf</span><span class="p">.</span><span class="n">py</span>
 </pre></div>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'zenmass';
+        var disqus_identifier = 'pelican-github-blog.html';
+        var disqus_url = 'http://fengyc.github.io/pelican-github-blog.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//zenmass.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
 
   </article>
 </section>
         <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
         </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">
@@ -133,5 +156,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'zenmass';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

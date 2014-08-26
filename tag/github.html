@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Zenmass - github</title>
         <link rel="stylesheet" href="http://fengyc.github.io/theme/css/main.css" />
+        <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Atom Feed" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +21,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://fengyc.github.io/pelican-github.html">利用pelican在github上搭建博客的办法</a></h1>
+                    <h1 class="entry-title"><a href="http://fengyc.github.io/pelican-github-blog.html">利用pelican在github上搭建博客的办法</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2014-08-22T20:20:00">
                 Published: 五 22 八月 2014
@@ -112,12 +113,19 @@
 <h2>增加DISQUS作为讨论组</h2>
 <div class="highlight"><pre><span class="err">先到</span><span class="n">DISQUS</span><span class="err">申请一个账号，并建立一个讨论组</span>
 <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s">&quot;s/.*DISQUS_SITENAME.*=.*/DISQUS_SITENAME=zenmass/g&quot;</span> <span class="n">publishconf</span><span class="p">.</span><span class="n">py</span>
-</pre></div>                </article>
+</pre></div><p>There are <a href="http://fengyc.github.io/pelican-github-blog.html#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
         </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">
@@ -128,5 +136,14 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'zenmass';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>
