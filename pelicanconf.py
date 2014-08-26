@@ -27,8 +27,9 @@ TRANSLATION_FEED_ATOM = None
 
 # Social widget
 SOCIAL = (('Weibo', 'http://weibo.com/fyingcai/'),
-          ('Github', 'https://github.com/fengyc/'),
-)
+          ('Github', 'https://github.com/fengyc/'),)
+
+MENUITEMS = (("about","/about"),)
 
 DEFAULT_PAGINATION = 10
 
