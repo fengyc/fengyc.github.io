@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/yingcai-feng.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-26T20:13:00+08:00</updated><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;h1&gt;关于&lt;/h1&gt;
-&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-24T17:40:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;h1&gt;下载远程仓库&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/yingcai-feng.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-26T20:13:00+08:00</updated><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-24T17:40:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
+&lt;/p&gt;
+&lt;h1&gt;下载远程仓库&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -12,7 +13,9 @@
 
 &lt;h1&gt;查看远程仓库&lt;/h1&gt;
 &lt;p&gt;当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：
-    git remove -v&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>利用pelican在github上搭建博客的办法</title><link href="http://fengyc.github.io/pelican-github-blog.html" rel="alternate"></link><updated>2014-08-26T14:12:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</id><summary type="html">&lt;h1&gt;简介&lt;/h1&gt;
+    git remove -v&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>利用pelican在github上搭建博客的办法</title><link href="http://fengyc.github.io/pelican-github-blog.html" rel="alternate"></link><updated>2014-08-26T14:12:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</id><summary type="html">&lt;p&gt;本文章介绍使用pelican和github建立个人博客的过程。
+&lt;/p&gt;
+&lt;h1&gt;简介&lt;/h1&gt;
 &lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
 &lt;p&gt;pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)&lt;/p&gt;
 &lt;p&gt;这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。&lt;/p&gt;
@@ -88,9 +91,9 @@
     cd pelican-themes
     pelican-themes -i gum&lt;/p&gt;
 &lt;h2&gt;增加DISQUS作为讨论组&lt;/h2&gt;
-&lt;p&gt;先到DISQUS&lt;a href="http://disqus.com/" title="DISQUS申请"&gt;disqus&lt;/a&gt;申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：
+&lt;p&gt;先到DISQUS(&lt;a href="http://disqus.com/" title="DISQUS申请"&gt;disqus&lt;/a&gt;)申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：
     DISQUS_SITENAME=zenmass&lt;/p&gt;
-&lt;h2&gt;使用google analytics&lt;a href="http://www.google.cn/intl/zh-CN/analytics/" title="Google Analytics申请"&gt;google-analytics&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;使用google analytics(&lt;a href="http://www.google.cn/intl/zh-CN/analytics/" title="Google Analytics申请"&gt;google-analytics&lt;/a&gt;)&lt;/h2&gt;
 &lt;p&gt;申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：
-    GOOGLE_ANALYTICS=&lt;/p&gt;</summary><category term="github"></category></entry><entry><title>Hello, World!</title><link href="http://fengyc.github.io/helloworld.html" rel="alternate"></link><updated>2014-08-22T10:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:helloworld.html</id><summary type="html">&lt;p&gt;是的，按照惯例，这是一个 Hello, world!&lt;/p&gt;
+    GOOGLE_ANALYTICS=&lt;/p&gt;</summary><category term="github"></category></entry><entry><title>Hello, World!</title><link href="http://fengyc.github.io/helloworld.html" rel="alternate"></link><updated>2014-08-22T10:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:helloworld.html</id><summary type="html">&lt;p&gt;是的，按照惯例，这是一个Hello, world!&lt;/p&gt;
 &lt;p&gt;仅作为在 github 上的第一篇文章。&lt;/p&gt;</summary><category term="blog"></category></entry></feed>
