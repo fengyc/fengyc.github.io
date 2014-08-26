@@ -37,58 +37,87 @@
 <p>In <a href="http://fengyc.github.io/category/bo-ke.html">博客</a>. </p>
 <p>tags: <a href="http://fengyc.github.io/tag/github.html">github</a> </p>
 </footer><!-- /.post-info -->      <h1>简介</h1>
-<p>这是在ubuntu 14.04下，使用pelican和github搭建博客的过程</p>
-<h1>github博客项目</h1>
+<p>发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。</p>
+<p>pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)</p>
+<p>这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。</p>
+<h1>在github上建立博客项目</h1>
 <p>在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
-<pre>
-https://github.com/abc/abc.github.io
-</pre></p>
+    https://github.com/abc/fengyc.github.io</p>
 <h1>安装</h1>
 <h2>安装准备环境</h2>
-<p># apt-get install -y --force-yes python-pip python-dev virtualenv</p>
+<div class="highlight"><pre><span class="err">\#</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">yes</span> <span class="n">git</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">python</span><span class="o">-</span><span class="n">dev</span> <span class="n">virtualenv</span>
+</pre></div>
+
+
 <h2>把项目clone到本地</h2>
-<p>git clone https://github.com/abc/abc.github.io</p>
+<div class="highlight"><pre><span class="n">mkdir</span> <span class="n">blog</span>
+<span class="n">cd</span> <span class="n">blog</span>
+<span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/fengyc.github.io.git</span>
+<span class="n">git</span> <span class="n">fetch</span>
+</pre></div>
+
+
 <h2>建立virtualenv环境</h2>
-<p><pre>
-cd abc.github.io
-mkdir .env
-virtualenv .env
-source .env/bin/activate
-</pre></p>
+<div class="highlight"><pre><span class="n">mkdir</span> <span class="p">.</span><span class="n">env</span>
+<span class="n">virtualenv</span> <span class="p">.</span><span class="n">env</span>
+<span class="n">source</span> <span class="p">.</span><span class="n">env</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span> <span class="err">#激活</span><span class="n">virtualenv</span><span class="err">环境</span>
+</pre></div>
+
+
 <h2>安装pelican和Markdown</h2>
-<p><pre>
-pip install pelican
-pip install Markdown
-</pre></p>
+<div class="highlight"><pre><span class="cp"># 在激活了virtualenv的前提下安装，避免污染python环境</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">Markdown</span>
+</pre></div>
+
+
 <h2>建立源分支</h2>
-<p><pre>
-git checkout -b source
-pelican-quickstart
-</pre>
-根据自己的实际环境选择向导中的变量</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">source</span>
+<span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
+</pre></div>
+
+
+<p>请根据自己的实际环境选择向导中的变量</p>
 <h2>编写第一个页面</h2>
-<p>vi content/hello.md
-用markdown语法编写一个页面，如(<a href="http://docs.getpelican.com/en/3.3.0/getting_started.html#writing-content-using-pelican">http://docs.getpelican.com/en/3.3.0/getting_started.html</a>)：
-<pre>
-Title: My super title
-Date: 2010-12-03 10:20
-Category: Python
-Tags: pelican, publishing
-Slug: my-super-post
-Author: Alexis Metaireau
-Summary: Short version for index and feeds</p>
-<p>This is the content of my super blog post.
-</pre></p>
+<div class="highlight"><pre><span class="n">vi</span> <span class="n">content</span><span class="o">/</span><span class="n">hello</span><span class="p">.</span><span class="n">md</span>
+</pre></div>
+
+
+<p>用markdown语法编写一个页面，如(<a href="http://docs.getpelican.com/en/3.3.0/getting_started.html" title="pelican参考页面">pelican-getting_started</a>)：
+    Title: My super title
+    Date: 2010-12-03 10:20
+    Category: Python
+    Tags: pelican, publishing
+    Slug: my-super-post
+    Author: Alexis Metaireau
+    Summary: Short version for index and feeds</p>
+<div class="highlight"><pre><span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="n">super</span> <span class="n">blog</span> <span class="n">post</span><span class="p">.</span>
+</pre></div>
+
+
 <h2>编译并发布</h2>
-<p><pre>
-make html
-pip install ghp-import
-git branch gp-pages
-ghp-import output
-git checkout master
-git merge gh-pages
-git push --all
-</pre></p>
+<div class="highlight"><pre><span class="n">make</span> <span class="n">html</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">ghp</span><span class="o">-</span><span class="n">import</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="n">gp</span><span class="o">-</span><span class="n">pages</span>
+<span class="n">ghp</span><span class="o">-</span><span class="n">import</span> <span class="n">output</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">all</span>
+</pre></div>
+
+
+<h1>其它</h1>
+<h2>pelican主题</h2>
+<p>pelican提供了很多的主题供用户使用，首先把主题下载到本地：
+    git clone https://github.com/getpelican/pelican-themes.git
+然后，进入到主题目录中，安装主题
+    cd pelican-themes
+    pelican-themes -i gum</p>
+<h2>增加DISQUS作为讨论组</h2>
+<div class="highlight"><pre><span class="err">先到</span><span class="n">DISQUS</span><span class="err">申请一个账号，并建立一个讨论组</span>
+<span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s">&quot;s/.*DISQUS_SITENAME.*=.*/DISQUS_SITENAME=zenmass/g&quot;</span> <span class="n">publishconf</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
     </div><!-- /.entry-content -->
 
   </article>
