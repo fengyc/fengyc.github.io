@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/bo-ke.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-26T14:12:00+08:00</updated><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-24T17:40:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;h1&gt;下载远程仓库&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-26T20:13:00+08:00</updated><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;h1&gt;关于&lt;/h1&gt;
+&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-24T17:40:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;h1&gt;下载远程仓库&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -92,4 +93,4 @@
 &lt;h2&gt;使用google analytics&lt;a href="http://www.google.cn/intl/zh-CN/analytics/" title="Google Analytics申请"&gt;google-analytics&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：
     GOOGLE_ANALYTICS=&lt;/p&gt;</summary><category term="github"></category></entry><entry><title>Hello, World!</title><link href="http://fengyc.github.io/helloworld.html" rel="alternate"></link><updated>2014-08-22T10:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:helloworld.html</id><summary type="html">&lt;p&gt;是的，按照惯例，这是一个 Hello, world!&lt;/p&gt;
-&lt;p&gt;仅作为在 github 上的第一篇文章。&lt;/p&gt;</summary><category term=""></category></entry></feed>
+&lt;p&gt;仅作为在 github 上的第一篇文章。&lt;/p&gt;</summary><category term="blog"></category></entry></feed>
