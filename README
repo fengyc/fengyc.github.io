@@ -1,0 +1,18 @@
+
+Tooltips:
+
+Install virtualenv in Ubuntu:
+$ sudo apt-get install -y python-pip
+$ sudo pip install virtualenv
+
+Install python-dev, support pelican
+$ sudo apt-get install python-dev
+
+1. Prepare virtual environment
+$ source venv
+
+2. Exit virtualenv
+$ deactivate
+
+3. Install pelican, markdown, ghp-import (in virtual environment)
+$ pip install pelican markdown ghp-import

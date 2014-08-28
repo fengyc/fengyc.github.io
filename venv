@@ -1,0 +1,12 @@
+#!/bin/bash
+
+CUR_DIR=$(cd "$(dirname "$0")"; pwd)
+cd "$CUR_DIR"
+if [ ! -e "$CUR_DIR/.env/bin/activate" ]; then
+	virtualenv "$CUR_DIR/.env"
+	if [ "$?" != "0" ]; then
+		echo "Could not locate virtualenv"
+		exit 1
+	fi
+fi
+source "$CUR_DIR/.env/bin/activate"
