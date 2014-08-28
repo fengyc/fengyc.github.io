@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Zenmass</title>
+	<meta name="description" content="">
+	<meta name="author" content="Yingcai FENG">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://fengyc.github.io/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="http://fengyc.github.io/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="http://fengyc.github.io/theme/local.css" rel="stylesheet">
+	<link href="http://fengyc.github.io/theme/pygments.css" rel="stylesheet">
+
+    <!-- Feeds -->
+    <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Atom Feed" />
+
+<script>var _gaq=[['_setAccount','UA-54175787-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+<script type="text/javascript">
+	var disqus_identifier = "virtualenv.html";
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://zenmass.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="http://fengyc.github.io/">Zenmass</a>
+			<ul class="nav">
+					<li><a href="/about">about</a></li>
+					<li class="active"><a href="http://fengyc.github.io/category/blog.html">blog</a></li>
+			</ul>
+			<p class="pull-right"><a href="http://fengyc.github.io/archives.html">[archives]</a> <a href="http://fengyc.github.io/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<h3>Blogroll</h3>
+			<ul>
+			</ul>
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://weibo.com/fyingcai/">Weibo</a></li>
+				<li><a href="https://github.com/fengyc/">Github</a></li>
+			</ul>
+			</div>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>使用virtualenv建立python开发环境</h1></div>
+		<div class="well small">Permalink: <a class="more" href="http://fengyc.github.io/virtualenv.html">2014-08-28 20:20:00</a>
+by <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG </a>
+ in <a href="http://fengyc.github.io/category/blog.html">blog</a>
+tags: <a href="http://fengyc.github.io/tag/tech-python.html">tech python</a> </div>
+		<div><p>在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！</p>
+<p>为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。</p>
+<!-- PELICAN_END_SUMMARY -->
+
+<p>virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的<code>bin include lib local</code>等目录，里面会有一个单独的python环境。</p>
+<p>如果要在建立一个virtualenv环境(目录为.env)，使用命令：
+    virtualenv .env
+然后，使用命令：
+    tree -d .env
+可以查看到整个目录的树结构
+    ├── bin
+    ├── include
+    │   └── python2.7 -&gt; /usr/include/python2.7
+    ├── lib
+    │   └── python2.7
+    │       ├── config -&gt; /usr/lib/python2.7/config
+    │       ├── distutils
+    │       ├── encodings -&gt; /usr/lib/python2.7/encodings
+    │       ├── lib-dynload -&gt; /usr/lib/python2.7/lib-dynload
+    │       └── site-packages
+    │           ├── _markerlib
+    │           ├── pip
+    │           │   ├── backwardcompat
+    │           │   ├── commands
+    │           │   ├── vcs
+    │           │   └── _vendor
+    │           │       ├── colorama
+    │           │       ├── distlib
+    │           │       │   └── _backport
+    │           │       ├── html5lib
+    │           │       │   ├── filters
+    │           │       │   ├── serializer
+    │           │       │   ├── treeadapters
+    │           │       │   ├── treebuilders
+    │           │       │   ├── treewalkers
+    │           │       │   └── trie
+    │           │       ├── _markerlib
+    │           │       └── requests
+    │           │           └── packages
+    │           │               ├── chardet
+    │           │               └── urllib3
+    │           │                   ├── contrib
+    │           │                   ├── packages
+    │           │                   │   └── ssl_match_hostname
+    │           │                   └── util
+    │           ├── pip-1.5.6.dist-info
+    │           ├── setuptools
+    │           │   ├── command
+    │           │   └── tests
+    │           └── setuptools-3.6.dist-info
+    └── local
+        ├── bin -&gt; /home/fengyingcai/hello/bin
+        ├── include -&gt; /home/fengyingcai/hello/include
+        └── lib -&gt; /home/fengyingcai/hello/lib</p>
+<p>然后，使用命令：
+    source .env/bin/activate
+就可以激活这个virtualenv环境，这时，会看到在命令提示前，会有
+    (.env)
+的提示</p>
+<p>如果要退出，使用命令
+    deactivate</p>
+<p>Yingcai FENG at SYSU</p></div>
+		<div>
+			<h2>Comments</h2>
+<div id="disqus_thread"></div>		<div>
+	</div>	
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; Yingcai FENG</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>
