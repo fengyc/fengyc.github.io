@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>使用virtualenv建立python开发环境</title>
+        <meta charset="utf-8" />
+        <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Full Atom Feed" />
+        <link href="http://fengyc.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://fengyc.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://fengyc.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://fengyc.github.io/theme/pygment.css" />
+
+        <script src="http://fengyc.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+              <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-54175787-1', '');
+                ga('send', 'pageview');
+
+              </script>
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://fengyc.github.io/">Zenmass <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://fengyc.github.io/">Home</a></li>
+
+                <li><a href="/about">About</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://fengyc.github.io/virtualenv.html" rel="bookmark"
+                   title="Permalink to 使用virtualenv建立python开发环境">使用virtualenv建立python开发环境</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-08-28T20:20:00">
+                四 28 八月 2014
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！</p>
+<p>为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。</p>
+<!-- PELICAN_END_SUMMARY -->
+
+<p>virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的<code>bin include lib local</code>等目录，里面会有一个单独的python环境。</p>
+<p>如果要在建立一个virtualenv环境(目录为.env)，使用命令：</p>
+<div class="highlight"><pre><span class="n">virtualenv</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>然后，使用命令：</p>
+<div class="highlight"><pre><span class="n">tree</span> <span class="o">-</span><span class="n">d</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>可以查看到整个目录的树结构</p>
+<div class="highlight"><pre><span class="err">├──</span> <span class="n">bin</span>
+<span class="err">├──</span> <span class="n">include</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">python2</span><span class="mf">.7</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span>
+<span class="err">├──</span> <span class="n">lib</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">python2</span><span class="mf">.7</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">config</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span><span class="o">/</span><span class="n">config</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">distutils</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">encodings</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span><span class="o">/</span><span class="n">encodings</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">lib</span><span class="o">-</span><span class="n">dynload</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span><span class="o">/</span><span class="n">lib</span><span class="o">-</span><span class="n">dynload</span>
+<span class="err">│</span>       <span class="err">└──</span> <span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+<span class="err">│</span>           <span class="err">├──</span> <span class="n">_markerlib</span>
+<span class="err">│</span>           <span class="err">├──</span> <span class="n">pip</span>
+<span class="err">│</span>           <span class="err">│</span>   <span class="err">├──</span> <span class="n">backwardcompat</span>
+<span class="err">│</span>           <span class="err">│</span>   <span class="err">├──</span> <span class="n">commands</span>
+<span class="err">│</span>           <span class="err">│</span>   <span class="err">├──</span> <span class="n">vcs</span>
+<span class="err">│</span>           <span class="err">│</span>   <span class="err">└──</span> <span class="n">_vendor</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">├──</span> <span class="n">colorama</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">├──</span> <span class="n">distlib</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">│</span>   <span class="err">└──</span> <span class="n">_backport</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">├──</span> <span class="n">html5lib</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">│</span>   <span class="err">├──</span> <span class="n">filters</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">│</span>   <span class="err">├──</span> <span class="n">serializer</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">│</span>   <span class="err">├──</span> <span class="n">treeadapters</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">│</span>   <span class="err">├──</span> <span class="n">treebuilders</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">│</span>   <span class="err">├──</span> <span class="n">treewalkers</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">│</span>   <span class="err">└──</span> <span class="n">trie</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">├──</span> <span class="n">_markerlib</span>
+<span class="err">│</span>           <span class="err">│</span>       <span class="err">└──</span> <span class="n">requests</span>
+<span class="err">│</span>           <span class="err">│</span>           <span class="err">└──</span> <span class="n">packages</span>
+<span class="err">│</span>           <span class="err">│</span>               <span class="err">├──</span> <span class="n">chardet</span>
+<span class="err">│</span>           <span class="err">│</span>               <span class="err">└──</span> <span class="n">urllib3</span>
+<span class="err">│</span>           <span class="err">│</span>                   <span class="err">├──</span> <span class="n">contrib</span>
+<span class="err">│</span>           <span class="err">│</span>                   <span class="err">├──</span> <span class="n">packages</span>
+<span class="err">│</span>           <span class="err">│</span>                   <span class="err">│</span>   <span class="err">└──</span> <span class="n">ssl_match_hostname</span>
+<span class="err">│</span>           <span class="err">│</span>                   <span class="err">└──</span> <span class="n">util</span>
+<span class="err">│</span>           <span class="err">├──</span> <span class="n">pip</span><span class="o">-</span><span class="mf">1.5.6</span><span class="p">.</span><span class="n">dist</span><span class="o">-</span><span class="n">info</span>
+<span class="err">│</span>           <span class="err">├──</span> <span class="n">setuptools</span>
+<span class="err">│</span>           <span class="err">│</span>   <span class="err">├──</span> <span class="n">command</span>
+<span class="err">│</span>           <span class="err">│</span>   <span class="err">└──</span> <span class="n">tests</span>
+<span class="err">│</span>           <span class="err">└──</span> <span class="n">setuptools</span><span class="o">-</span><span class="mf">3.6</span><span class="p">.</span><span class="n">dist</span><span class="o">-</span><span class="n">info</span>
+<span class="err">└──</span> <span class="n">local</span>
+    <span class="err">├──</span> <span class="n">bin</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">fengyingcai</span><span class="o">/</span><span class="n">hello</span><span class="o">/</span><span class="n">bin</span>
+    <span class="err">├──</span> <span class="n">include</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">fengyingcai</span><span class="o">/</span><span class="n">hello</span><span class="o">/</span><span class="n">include</span>
+    <span class="err">└──</span> <span class="n">lib</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">fengyingcai</span><span class="o">/</span><span class="n">hello</span><span class="o">/</span><span class="n">lib</span>
+</pre></div>
+
+
+<p>然后，使用命令：</p>
+<div class="highlight"><pre><span class="n">source</span> <span class="p">.</span><span class="n">env</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+
+
+<p>就可以激活这个virtualenv环境，这时，会看到在命令提示前，会有</p>
+<div class="highlight"><pre><span class="p">(.</span><span class="n">env</span><span class="p">)</span>
+</pre></div>
+
+
+<p>的提示</p>
+<p>如果要退出，使用命令:</p>
+<div class="highlight"><pre><span class="n">deactivate</span>
+</pre></div>
+
+
+<p>Yingcai FENG at SYSU</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "virtualenv.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://zenmass.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/about">About</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://fengyc.github.io/category/blog.html">blog</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
+	    <li class="tag-1"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="http://weibo.com/fyingcai/">Weibo</a></li>
+    <li><a href="https://github.com/fengyc/">Github</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/fengyc/" target="_blank">Github</a></div></li>
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'zenmass';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://fengyc.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://fengyc.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="http://fengyc.github.io/theme/js/plugins.js"></script>
+</body>
+</html>
