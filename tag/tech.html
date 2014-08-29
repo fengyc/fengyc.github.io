@@ -65,11 +65,25 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">使用virtualenv建立python开发环境</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-28T20:20:00"> Thu 28 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-28T20:20:00"> 四 28 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！</p>
 <p>为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。</p>
- </div><!-- /.entry-content -->
+<!-- PELICAN_END_SUMMARY -->
+
+<p>virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的<code>bin include lib local</code>等目录，里面会有一个单独的python环境。</p>
+<p>如果要在建立一个virtualenv环境(目录为.env)，使用命令：</p>
+<div class="highlight"><pre><span class="n">virtualenv</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>然后，使用命令：</p>
+<div class="highlight"><pre><span class="n">tree</span> <span class="o">-</span><span class="n">d</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>可以查看到整个目录的树结构</p>
+<div class="highlight"><pre><span class="err">├──</span> <span class="n">bin ...</span></pre></div></!--> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -104,11 +118,12 @@
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
 	    <li class="tag-1"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
 </ul>
 

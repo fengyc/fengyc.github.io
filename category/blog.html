@@ -64,13 +64,58 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/windows-desktop-sharing.html" rel="bookmark" title="Permalink to Windows桌面共享">Windows桌面共享</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-08-29T21:00:00"> 五 29 八月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>最近在做一个windows桌面共享的项目，找了一系列的方法：</p>
+<p><strong>视频广播方式</strong></p>
+<p>视频广播方式可能是最具备跨平台特性的方式。在本地程序录制桌面的视频，或者基于硬件直接录制然后播放，然后实时发送到各个客户端。这种思想有很多的实现方式，而且整个结构很容易理解和扩展。</p>
+<p>录制的方式，总结了一下，找到下面的录制方式：</p>
+<ol>
+<li>windows GDI 截图</li>
+<li>directShow 直接录制</li>
+<li>mirror driver 或 mini port 驱动录制</li>
+<li>ffmpeg 录制 </li>
+</ol>
+<p>为了降低分享桌面的主机的负载，可以引入特定的视频广播服务器，由服务器进行视频转发。具体的协议可通过udp/rtsp等实现。</p>
+<p>这种方式具备与平台无关的特性，视频录制方式可随时扩展，而通过标准的接口把数据提交到转发服务器。但实现起来，需要做的工作也很多，需要理解基本的视频处理知识，实现一个良好的系统框架。</p>
+<p><strong>Windows Desktop Sharing ...</strong></p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://fengyc.github.io/windows-desktop-sharing.html" rel="bookmark" title="Permalink to Windows桌面共享">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://fengyc.github.io/tag/windows.html">windows</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">使用virtualenv建立python开发环境</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-28T20:20:00"> Thu 28 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-28T20:20:00"> 四 28 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！</p>
 <p>为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。</p>
- </div><!-- /.entry-content -->
+<!-- PELICAN_END_SUMMARY -->
+
+<p>virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的<code>bin include lib local</code>等目录，里面会有一个单独的python环境。</p>
+<p>如果要在建立一个virtualenv环境(目录为.env)，使用命令：</p>
+<div class="highlight"><pre><span class="n">virtualenv</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>然后，使用命令：</p>
+<div class="highlight"><pre><span class="n">tree</span> <span class="o">-</span><span class="n">d</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>可以查看到整个目录的树结构</p>
+<div class="highlight"><pre><span class="err">├──</span> <span class="n">bin ...</span></pre></div></!--> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -88,7 +133,7 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/about.html" rel="bookmark" title="Permalink to 关于">关于</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-26T20:13:00"> Tue 26 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-26T20:13:00"> 二 26 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>先空着</p> </div><!-- /.entry-content -->
 
@@ -107,10 +152,44 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/git-commands.html" rel="bookmark" title="Permalink to git常用命令">git常用命令</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-24T17:40:00"> Sun 24 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-24T17:40:00"> 日 24 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>本文章记录了git的日常使用中的常用命令。
- </div><!-- /.entry-content -->
+<!-- PELICAN_END_SUMMARY --></p>
+<p><strong>下载远程仓库</strong></p>
+<div class="highlight"><pre><span class="nx">git</span> <span class="nx">clone</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p><strong>更新</strong>  </p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+
+
+<p><strong>推送</strong></p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+
+
+<p><strong>在本地工作目录指定远程仓库</strong></p>
+<div class="highlight"><pre><span class="nx">git</span> <span class="nx">remote</span> <span class="nb">add</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p><strong>查看远程仓库</strong><br />
+当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">remove</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+
+
+<p><strong>添加子模块</strong><br />
+当项目需要引用到其它git仓库时，使用子模块</p>
+<div class="highlight"><pre><span class="nx">git</span> <span class="nx">submodule</span> <span class="nb">add</span> <span class="nx">origin</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p><strong>删除子模块</strong><br />
+很奇怪，并没有<code>git submodule remove/delete</code>命令，只能通过先删除子模块目录 ...</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://fengyc.github.io/git-commands.html" rel="bookmark" title="Permalink to git常用命令">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -127,12 +206,19 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/pelican-github-blog.html" rel="bookmark" title="Permalink to 利用pelican在github上搭建博客的办法">利用pelican在github上搭建博客的办法</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-22T20:20:00"> Fri 22 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-22T20:20:00"> 五 22 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。</p>
 <p>pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)</p>
 <p>这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。</p>
- </div><!-- /.entry-content -->
+<!-- PELICAN_END_SUMMARY -->
+
+<h2>安装过程</h2>
+<p><strong>在github上建立博客项目</strong></p>
+<p>在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
+    https://github.com/abc/fengyc.github.io</p>
+<p><strong>安装准备环境</strong></p>
+<div class="highlight"><pre><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y ...</span></pre></div></!--> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://fengyc.github.io/pelican-github-blog.html" rel="bookmark" title="Permalink to 利用pelican在github上搭建博客的办法">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -150,9 +236,10 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/helloworld.html" rel="bookmark" title="Permalink to Hello, World!">Hello, World!</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-22T10:20:00"> Fri 22 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-22T10:20:00"> 五 22 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>这个一个Hello, world!</p> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>是的，按照惯例，这是一个Hello, world!</p>
+<p>仅作为在 github 上的第一篇文章。</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://fengyc.github.io/helloworld.html" rel="bookmark" title="Permalink to Hello, World!">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -186,11 +273,12 @@
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
 	    <li class="tag-1"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
 </ul>
 

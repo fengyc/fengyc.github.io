@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/yingcai-feng.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-28T20:20:00+08:00</updated><entry><title>使用virtualenv建立python开发环境</title><link href="http://fengyc.github.io/virtualenv.html" rel="alternate"></link><updated>2014-08-28T20:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-28:virtualenv.html</id><summary type="html">&lt;p&gt;在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/yingcai-feng.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-29T21:15:00+08:00</updated><entry><title>Windows桌面共享</title><link href="http://fengyc.github.io/windows-desktop-sharing.html" rel="alternate"></link><updated>2014-08-29T21:00:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-29:windows-desktop-sharing.html</id><summary type="html">&lt;p&gt;最近在做一个windows桌面共享的项目，找了一系列的方法：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;视频广播方式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;视频广播方式可能是最具备跨平台特性的方式。在本地程序录制桌面的视频，或者基于硬件直接录制然后播放，然后实时发送到各个客户端。这种思想有很多的实现方式，而且整个结构很容易理解和扩展。&lt;/p&gt;
+&lt;p&gt;录制的方式，总结了一下，找到下面的录制方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;windows GDI 截图&lt;/li&gt;
+&lt;li&gt;directShow 直接录制&lt;/li&gt;
+&lt;li&gt;mirror driver 或 mini port 驱动录制&lt;/li&gt;
+&lt;li&gt;ffmpeg 录制 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为了降低分享桌面的主机的负载，可以引入特定的视频广播服务器，由服务器进行视频转发。具体的协议可通过udp/rtsp等实现。&lt;/p&gt;
+&lt;p&gt;这种方式具备与平台无关的特性，视频录制方式可随时扩展，而通过标准的接口把数据提交到转发服务器。但实现起来，需要做的工作也很多，需要理解基本的视频处理知识，实现一个良好的系统框架。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Windows Desktop Sharing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果是只针对windows平台，通过windows desktop sharing，工作量可以减少很多。&lt;/p&gt;
+&lt;p&gt;windows desktop sharing是基于rdp的一套API，提供非常简单快捷实现桌面共享的功能。根据在&lt;a href="http://msdn.microsoft.com/en-us/library/bb968809.aspx" title="MSDN Windows Desktop Sharing"&gt;MSDN&lt;/a&gt;上的介绍，这个功能是微软从Vista开始提供的功能，而且在&lt;a href="http://blogs.msdn.com/b/rds/archive/2007/03/08/windows-desktop-sharing-api.aspx" title="Remote Desktop Service Blog"&gt;BLOG&lt;/a&gt;中提到，这个功能是微软的 "Windows Meeting Space" 和 "Remote Assistance" 的基础。&lt;/p&gt;
+&lt;p&gt;目前粗略看了一下MSDN上的介绍，它的核心对象就是RDPSession和RDPViewer两个，其它的操作在这两个对象的基础上进行。&lt;/p&gt;
+&lt;p&gt;除了支持桌面共享，这个API还支持很多有意思的功能，比较连接反转（Reverse Connect）、应用程序窗口共享、虚拟通道等等。&lt;/p&gt;
+&lt;p&gt;目前准备使用Windows Desktop Sharing来实现一个系统原型，评测一下效果。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Yingcai FENG&lt;/p&gt;</summary><category term="windows"></category></entry><entry><title>使用virtualenv建立python开发环境</title><link href="http://fengyc.github.io/virtualenv.html" rel="alternate"></link><updated>2014-08-28T20:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-28:virtualenv.html</id><summary type="html">&lt;p&gt;在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！&lt;/p&gt;
 &lt;p&gt;为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。&lt;/p&gt;
-
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 
 &lt;p&gt;virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的&lt;code&gt;bin include lib local&lt;/code&gt;等目录，里面会有一个单独的python环境。&lt;/p&gt;
 &lt;p&gt;如果要在建立一个virtualenv环境(目录为.env)，使用命令：&lt;/p&gt;
@@ -78,24 +97,53 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</summary><category term="tech"></category><category term="python"></category></entry><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-24T17:40:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
-&lt;/p&gt;
-&lt;h1&gt;下载远程仓库&lt;/h1&gt;
+&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</summary><category term="tech"></category><category term="python"></category></entry><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-29T21:15:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
+&lt;!-- PELICAN_END_SUMMARY --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;下载远程仓库&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h1&gt;在本地工作目录指定远程仓库&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;更新&lt;/strong&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;pull&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;推送&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;在本地工作目录指定远程仓库&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;remote&lt;/span&gt; &lt;span class="nb"&gt;add&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h1&gt;查看远程仓库&lt;/h1&gt;
-&lt;p&gt;当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：
-    git remove -v&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>利用pelican在github上搭建博客的办法</title><link href="http://fengyc.github.io/pelican-github-blog.html" rel="alternate"></link><updated>2014-08-26T14:12:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</id><summary type="html">&lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;查看远程仓库&lt;/strong&gt;&lt;br /&gt;
+当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;remove&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;添加子模块&lt;/strong&gt;&lt;br /&gt;
+当项目需要引用到其它git仓库时，使用子模块&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;submodule&lt;/span&gt; &lt;span class="nb"&gt;add&lt;/span&gt; &lt;span class="nx"&gt;origin&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;删除子模块&lt;/strong&gt;&lt;br /&gt;
+很奇怪，并没有&lt;code&gt;git submodule remove/delete&lt;/code&gt;命令，只能通过先删除子模块目录，然后调整&lt;code&gt;.gitmodules&lt;/code&gt;文件来实现&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;cache&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nx"&gt;rm&lt;/span&gt; &lt;span class="na"&gt;-rf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后修改&lt;code&gt;.gitmodules&lt;/code&gt;实现&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Yingcai FENG&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>利用pelican在github上搭建博客的办法</title><link href="http://fengyc.github.io/pelican-github-blog.html" rel="alternate"></link><updated>2014-08-26T14:12:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</id><summary type="html">&lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
 &lt;p&gt;pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)&lt;/p&gt;
 &lt;p&gt;这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。&lt;/p&gt;
-
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 
 &lt;h2&gt;安装过程&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;在github上建立博客项目&lt;/strong&gt;&lt;/p&gt;

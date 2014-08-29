@@ -65,11 +65,25 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">使用virtualenv建立python开发环境</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-28T20:20:00"> Thu 28 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-28T20:20:00"> 四 28 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！</p>
 <p>为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。</p>
- </div><!-- /.entry-content -->
+<!-- PELICAN_END_SUMMARY -->
+
+<p>virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的<code>bin include lib local</code>等目录，里面会有一个单独的python环境。</p>
+<p>如果要在建立一个virtualenv环境(目录为.env)，使用命令：</p>
+<div class="highlight"><pre><span class="n">virtualenv</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>然后，使用命令：</p>
+<div class="highlight"><pre><span class="n">tree</span> <span class="o">-</span><span class="n">d</span> <span class="p">.</span><span class="n">env</span>
+</pre></div>
+
+
+<p>可以查看到整个目录的树结构</p>
+<div class="highlight"><pre><span class="err">├──</span> <span class="n">bin ...</span></pre></div></!--> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -87,12 +101,19 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/pelican-github-blog.html" rel="bookmark" title="Permalink to 利用pelican在github上搭建博客的办法">利用pelican在github上搭建博客的办法</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-22T20:20:00"> Fri 22 August 2014 </abbr>
+				                    <abbr class="published" title="2014-08-22T20:20:00"> 五 22 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。</p>
 <p>pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)</p>
 <p>这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。</p>
- </div><!-- /.entry-content -->
+<!-- PELICAN_END_SUMMARY -->
+
+<h2>安装过程</h2>
+<p><strong>在github上建立博客项目</strong></p>
+<p>在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
+    https://github.com/abc/fengyc.github.io</p>
+<p><strong>安装准备环境</strong></p>
+<div class="highlight"><pre><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y ...</span></pre></div></!--> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://fengyc.github.io/pelican-github-blog.html" rel="bookmark" title="Permalink to 利用pelican在github上搭建博客的办法">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -127,11 +148,12 @@
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
 	    <li class="tag-1"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
 </ul>
 
