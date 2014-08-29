@@ -6,14 +6,13 @@ Tags: github, python
 Slug: pelican-github-blog
 Author: Yingcai FENG
 
-本文章介绍使用pelican和github建立个人博客的过程。
-
-# 简介
 发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。
 
 pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)
 
 这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。
+
+<!-- PELICAN_END_SUMMARY -->
 
 # 在github上建立博客项目
 在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
