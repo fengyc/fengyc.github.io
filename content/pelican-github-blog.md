@@ -14,34 +14,50 @@ pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语�
 
 <!-- PELICAN_END_SUMMARY -->
 
-# 在github上建立博客项目
+## 安装过程
+
+**在github上建立博客项目**
+
 在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
     https://github.com/abc/fengyc.github.io
 
-# 安装
-## 安装准备环境
+**安装准备环境**
+
     apt-get install -y --force-yes git python-pip python-dev virtualenv
-## 把项目clone到本地
+
+**把项目clone到本地**
+
     mkdir blog
     cd blog
     git init
     git remote add origin https://github.com/fengyc.github.io.git
     git fetch
-## 建立virtualenv环境
+
+**建立virtualenv环境**
+
     mkdir .env
     virtualenv .env
-    source .env/bin/activate #激活virtualenv环境
-## 安装pelican和Markdown
+
+**激活virtualenv环境**
+
+    source .env/bin/activate 
+
+**安装pelican和Markdown**  
 在激活了virtualenv的前提下安装，避免污染python环境
+
     pip install pelican
     pip install Markdown
-## 建立源分支
+
+**建立源分支**
+
     git checkout -b source
     pelican-quickstart
+
 请根据自己的实际环境选择向导中的变量
-## 编写第一个页面
-    vi content/hello.md
+
+**编写第一个页面**
 用markdown语法编写一个页面，如([pelican-getting_started])：
+
     Title: My super title
     Date: 2010-12-03 10:20
     Category: Python
@@ -51,7 +67,9 @@ pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语�
     Summary: Short version for index and feeds
 
     This is the content of my super blog post.
-## 编译并发布
+
+**编译并发布**
+
     make html
     pip install ghp-import
     git branch gp-pages
@@ -60,18 +78,24 @@ pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语�
     git merge gh-pages
     git push --all
 
-# 其它
 ## pelican主题
 pelican提供了很多的主题供用户使用，首先把主题下载到本地：
+
     git clone https://github.com/getpelican/pelican-themes.git
+
 然后，进入到主题目录中，安装主题
+
     cd pelican-themes
     pelican-themes -i gum
+
 ## 增加DISQUS作为讨论组
 先到DISQUS([disqus])申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：
+
     DISQUS_SITENAME=zenmass
+
 ## 使用google analytics([google-analytics])
 申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：
+
     GOOGLE_ANALYTICS=
 
 [pelican-getting_started]: http://docs.getpelican.com/en/3.3.0/getting_started.html "pelican参考页面"
