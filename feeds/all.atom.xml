@@ -1,65 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/all.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-08-28T20:20:00+08:00</updated><entry><title>使用virtualenv建立python开发环境</title><link href="http://fengyc.github.io/virtualenv.html" rel="alternate"></link><updated>2014-08-28T20:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-28:virtualenv.html</id><summary type="html">&lt;p&gt;在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！&lt;/p&gt;
 &lt;p&gt;为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
+
 
 &lt;p&gt;virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的&lt;code&gt;bin include lib local&lt;/code&gt;等目录，里面会有一个单独的python环境。&lt;/p&gt;
-&lt;p&gt;如果要在建立一个virtualenv环境(目录为.env)，使用命令：
-    virtualenv .env
-然后，使用命令：
-    tree -d .env
-可以查看到整个目录的树结构
-    ├── bin
-    ├── include
-    │   └── python2.7 -&amp;gt; /usr/include/python2.7
-    ├── lib
-    │   └── python2.7
-    │       ├── config -&amp;gt; /usr/lib/python2.7/config
-    │       ├── distutils
-    │       ├── encodings -&amp;gt; /usr/lib/python2.7/encodings
-    │       ├── lib-dynload -&amp;gt; /usr/lib/python2.7/lib-dynload
-    │       └── site-packages
-    │           ├── _markerlib
-    │           ├── pip
-    │           │   ├── backwardcompat
-    │           │   ├── commands
-    │           │   ├── vcs
-    │           │   └── _vendor
-    │           │       ├── colorama
-    │           │       ├── distlib
-    │           │       │   └── _backport
-    │           │       ├── html5lib
-    │           │       │   ├── filters
-    │           │       │   ├── serializer
-    │           │       │   ├── treeadapters
-    │           │       │   ├── treebuilders
-    │           │       │   ├── treewalkers
-    │           │       │   └── trie
-    │           │       ├── _markerlib
-    │           │       └── requests
-    │           │           └── packages
-    │           │               ├── chardet
-    │           │               └── urllib3
-    │           │                   ├── contrib
-    │           │                   ├── packages
-    │           │                   │   └── ssl_match_hostname
-    │           │                   └── util
-    │           ├── pip-1.5.6.dist-info
-    │           ├── setuptools
-    │           │   ├── command
-    │           │   └── tests
-    │           └── setuptools-3.6.dist-info
-    └── local
-        ├── bin -&amp;gt; /home/fengyingcai/hello/bin
-        ├── include -&amp;gt; /home/fengyingcai/hello/include
-        └── lib -&amp;gt; /home/fengyingcai/hello/lib&lt;/p&gt;
-&lt;p&gt;然后，使用命令：
-    source .env/bin/activate
-就可以激活这个virtualenv环境，这时，会看到在命令提示前，会有
-    (.env)
-的提示&lt;/p&gt;
-&lt;p&gt;如果要退出，使用命令
-    deactivate&lt;/p&gt;
+&lt;p&gt;如果要在建立一个virtualenv环境(目录为.env)，使用命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后，使用命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tree&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以查看到整个目录的树结构&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;bin&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;lib&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;distutils&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;encodings&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;encodings&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dynload&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dynload&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;_markerlib&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;backwardcompat&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;commands&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;vcs&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;_vendor&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;colorama&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;distlib&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;_backport&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;html5lib&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;filters&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;serializer&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;treeadapters&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;treebuilders&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;treewalkers&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;trie&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;_markerlib&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;       &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;packages&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;               &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;chardet&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;               &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;urllib3&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;                   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;contrib&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;                   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;packages&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;                   &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;ssl_match_hostname&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;                   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;util&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.5.6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;setuptools&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;tests&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;           &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;setuptools&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;3.6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;bin&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fengyingcai&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;
+    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fengyingcai&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;include&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;lib&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fengyingcai&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后，使用命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;就可以激活这个virtualenv环境，这时，会看到在命令提示前，会有&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;的提示&lt;/p&gt;
+&lt;p&gt;如果要退出，使用命令:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;deactivate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</summary><category term="tech python"></category></entry><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-24T17:40:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
 &lt;/p&gt;
 &lt;h1&gt;下载远程仓库&lt;/h1&gt;
