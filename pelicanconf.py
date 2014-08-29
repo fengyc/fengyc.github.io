@@ -40,7 +40,7 @@ MENUITEMS = (("About","/about"),)
 
 DEFAULT_PAGINATION = 10
 
-SUMMARY_MAX_LENGTH = None
+SUMMARY_MAX_LENGTH = 120
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True

@@ -2,12 +2,11 @@ Title: 利用pelican在github上搭建博客的办法
 Date: 2014-08-22 20:20
 Modified: 2014-08-26 14:12
 Category: blog
-Tags: github
+Tags: github, python
 Slug: pelican-github-blog
 Author: Yingcai FENG
 
 本文章介绍使用pelican和github建立个人博客的过程。
-<!-- PELICAN_END_SUMMARY -->
 
 # 简介
 发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。
