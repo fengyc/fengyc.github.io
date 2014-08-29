@@ -92,8 +92,7 @@
 
 &lt;h1&gt;查看远程仓库&lt;/h1&gt;
 &lt;p&gt;当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：
-    git remove -v&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sun, 24 Aug 2014 17:40:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-24:git-commands.html</guid><category>git</category></item><item><title>利用pelican在github上搭建博客的办法</title><link>http://fengyc.github.io/pelican-github-blog.html</link><description>&lt;p&gt;本文章介绍使用pelican和github建立个人博客的过程。
-&lt;/p&gt;
+    git remove -v&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sun, 24 Aug 2014 17:40:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-24:git-commands.html</guid><category>git</category></item><item><title>利用pelican在github上搭建博客的办法</title><link>http://fengyc.github.io/pelican-github-blog.html</link><description>&lt;p&gt;本文章介绍使用pelican和github建立个人博客的过程。&lt;/p&gt;
 &lt;h1&gt;简介&lt;/h1&gt;
 &lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
 &lt;p&gt;pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)&lt;/p&gt;
@@ -174,5 +173,5 @@
     DISQUS_SITENAME=zenmass&lt;/p&gt;
 &lt;h2&gt;使用google analytics(&lt;a href="http://www.google.cn/intl/zh-CN/analytics/" title="Google Analytics申请"&gt;google-analytics&lt;/a&gt;)&lt;/h2&gt;
 &lt;p&gt;申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：
-    GOOGLE_ANALYTICS=&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Tue, 26 Aug 2014 14:12:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</guid><category>github</category></item><item><title>Hello, World!</title><link>http://fengyc.github.io/helloworld.html</link><description>&lt;p&gt;是的，按照惯例，这是一个Hello, world!&lt;/p&gt;
+    GOOGLE_ANALYTICS=&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Tue, 26 Aug 2014 14:12:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</guid><category>github</category><category>python</category></item><item><title>Hello, World!</title><link>http://fengyc.github.io/helloworld.html</link><description>&lt;p&gt;是的，按照惯例，这是一个Hello, world!&lt;/p&gt;
 &lt;p&gt;仅作为在 github 上的第一篇文章。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Fri, 22 Aug 2014 10:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-22:helloworld.html</guid><category>blog</category></item></channel></rss>
