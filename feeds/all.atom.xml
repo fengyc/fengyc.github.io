@@ -92,11 +92,11 @@
 
 &lt;h1&gt;查看远程仓库&lt;/h1&gt;
 &lt;p&gt;当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：
-    git remove -v&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>利用pelican在github上搭建博客的办法</title><link href="http://fengyc.github.io/pelican-github-blog.html" rel="alternate"></link><updated>2014-08-26T14:12:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</id><summary type="html">&lt;p&gt;本文章介绍使用pelican和github建立个人博客的过程。&lt;/p&gt;
-&lt;h1&gt;简介&lt;/h1&gt;
-&lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
+    git remove -v&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>利用pelican在github上搭建博客的办法</title><link href="http://fengyc.github.io/pelican-github-blog.html" rel="alternate"></link><updated>2014-08-26T14:12:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</id><summary type="html">&lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
 &lt;p&gt;pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)&lt;/p&gt;
 &lt;p&gt;这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。&lt;/p&gt;
+
+
 &lt;h1&gt;在github上建立博客项目&lt;/h1&gt;
 &lt;p&gt;在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
     https://github.com/abc/fengyc.github.io&lt;/p&gt;
