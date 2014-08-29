@@ -4,7 +4,6 @@ Category: blog
 Tags: blog 
 Slug: helloworld
 Author: Yingcai FENG
-Summary: 这个一个Hello, world!
 
 是的，按照惯例，这是一个Hello, world!
 

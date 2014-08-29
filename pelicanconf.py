@@ -12,12 +12,10 @@ TIMEZONE = 'Asia/Shanghai'
 
 DEFAULT_LANG = 'zh'
 
-#THEME = 'bootstrap'
-THEME = 'gum'
-#THEME = 'pelican-bootstrap3'
+THEME = 'pelican-themes/gum'
 
 PLUGIN_PATHS = ["pelican-plugins"]
-PLUGINS = ["summary"]
+#PLUGINS = ["summary"]
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -40,7 +38,7 @@ MENUITEMS = (("About","/about"),)
 
 DEFAULT_PAGINATION = 10
 
-SUMMARY_MAX_LENGTH = 120
+SUMMARY_MAX_LENGTH = 40
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
