@@ -97,16 +97,16 @@
 &lt;p&gt;这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。&lt;/p&gt;
 
 
-&lt;h1&gt;在github上建立博客项目&lt;/h1&gt;
+&lt;h2&gt;安装过程&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;在github上建立博客项目&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
     https://github.com/abc/fengyc.github.io&lt;/p&gt;
-&lt;h1&gt;安装&lt;/h1&gt;
-&lt;h2&gt;安装准备环境&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;安装准备环境&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;force&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;yes&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;把项目clone到本地&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;把项目clone到本地&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
 &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
 &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
@@ -115,42 +115,46 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;建立virtualenv环境&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;建立virtualenv环境&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;
 &lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;
-&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="err"&gt;#激活&lt;/span&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt;&lt;span class="err"&gt;环境&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;安装pelican和Markdown&lt;/h2&gt;
-&lt;p&gt;在激活了virtualenv的前提下安装，避免污染python环境
-    pip install pelican
-    pip install Markdown&lt;/p&gt;
-&lt;h2&gt;建立源分支&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;激活virtualenv环境&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;安装pelican和Markdown&lt;/strong&gt;&lt;br /&gt;
+在激活了virtualenv的前提下安装，避免污染python环境&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;Markdown&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;建立源分支&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;checkout&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;
 &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;请根据自己的实际环境选择向导中的变量&lt;/p&gt;
-&lt;h2&gt;编写第一个页面&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vi&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;p&gt;&lt;strong&gt;编写第一个页面&lt;/strong&gt;
+用markdown语法编写一个页面，如(&lt;a href="http://docs.getpelican.com/en/3.3.0/getting_started.html" title="pelican参考页面"&gt;pelican-getting_started&lt;/a&gt;)：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;My&lt;/span&gt; &lt;span class="kd"&gt;super&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;publishing&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;
+&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Alexis&lt;/span&gt; &lt;span class="n"&gt;Metaireau&lt;/span&gt;
+&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Short&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;feeds&lt;/span&gt;
+
+&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="kd"&gt;super&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt; &lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;用markdown语法编写一个页面，如(&lt;a href="http://docs.getpelican.com/en/3.3.0/getting_started.html" title="pelican参考页面"&gt;pelican-getting_started&lt;/a&gt;)：
-    Title: My super title
-    Date: 2010-12-03 10:20
-    Category: Python
-    Tags: pelican, publishing
-    Slug: my-super-post
-    Author: Alexis Metaireau
-    Summary: Short version for index and feeds&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="n"&gt;super&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt; &lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;编译并发布&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;编译并发布&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;
 &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;import&lt;/span&gt;
 &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;branch&lt;/span&gt; &lt;span class="n"&gt;gp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;
@@ -161,17 +165,26 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h1&gt;其它&lt;/h1&gt;
 &lt;h2&gt;pelican主题&lt;/h2&gt;
-&lt;p&gt;pelican提供了很多的主题供用户使用，首先把主题下载到本地：
-    git clone https://github.com/getpelican/pelican-themes.git
-然后，进入到主题目录中，安装主题
-    cd pelican-themes
-    pelican-themes -i gum&lt;/p&gt;
+&lt;p&gt;pelican提供了很多的主题供用户使用，首先把主题下载到本地：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-themes.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后，进入到主题目录中，安装主题&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;
+&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;gum&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h2&gt;增加DISQUS作为讨论组&lt;/h2&gt;
-&lt;p&gt;先到DISQUS(&lt;a href="http://disqus.com/" title="DISQUS申请"&gt;disqus&lt;/a&gt;)申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：
-    DISQUS_SITENAME=zenmass&lt;/p&gt;
+&lt;p&gt;先到DISQUS(&lt;a href="http://disqus.com/" title="DISQUS申请"&gt;disqus&lt;/a&gt;)申请一个账号，并建立一个讨论组。记录下讨论组的shortname，然后记录到配置文件中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DISQUS_SITENAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;zenmass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h2&gt;使用google analytics(&lt;a href="http://www.google.cn/intl/zh-CN/analytics/" title="Google Analytics申请"&gt;google-analytics&lt;/a&gt;)&lt;/h2&gt;
-&lt;p&gt;申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：
-    GOOGLE_ANALYTICS=&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Tue, 26 Aug 2014 14:12:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</guid><category>github</category><category>python</category></item><item><title>Hello, World!</title><link>http://fengyc.github.io/helloworld.html</link><description>&lt;p&gt;是的，按照惯例，这是一个Hello, world!&lt;/p&gt;
+&lt;p&gt;申请一个google analytics账号，建立一个项目，然后把跟踪ID填入到配置文件中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;GOOGLE_ANALYTICS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Tue, 26 Aug 2014 14:12:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-22:pelican-github-blog.html</guid><category>github</category><category>python</category></item><item><title>Hello, World!</title><link>http://fengyc.github.io/helloworld.html</link><description>&lt;p&gt;是的，按照惯例，这是一个Hello, world!&lt;/p&gt;
 &lt;p&gt;仅作为在 github 上的第一篇文章。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Fri, 22 Aug 2014 10:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-22:helloworld.html</guid><category>blog</category></item></channel></rss>
