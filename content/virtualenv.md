@@ -1,7 +1,7 @@
 Title: 使用virtualenv建立python开发环境
 Date: 2014-08-28 20:20
 Category: blog
-Tags: tech python
+Tags: tech, python
 Slug: virtualenv
 Author: Yingcai FENG
 

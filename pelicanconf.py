@@ -12,7 +12,9 @@ TIMEZONE = 'Asia/Shanghai'
 
 DEFAULT_LANG = 'zh'
 
-THEME = 'bootstrap'
+#THEME = 'bootstrap'
+THEME = 'gum'
+#THEME = 'pelican-bootstrap3'
 
 PLUGIN_PATHS = ["pelican-plugins"]
 PLUGINS = ["summary"]
@@ -32,7 +34,9 @@ TRANSLATION_FEED_ATOM = None
 SOCIAL = (('Weibo', 'http://weibo.com/fyingcai/'),
           ('Github', 'https://github.com/fengyc/'),)
 
-MENUITEMS = (("about","/about"),)
+GITHUB_URL = 'https://github.com/fengyc/'
+
+MENUITEMS = (("About","/about"),)
 
 DEFAULT_PAGINATION = 10
 
