@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 29 Aug 2014 21:15:00 +0800</lastBuildDate><item><title>Windows桌面共享</title><link>http://fengyc.github.io/windows-desktop-sharing.html</link><description>&lt;p&gt;最近在做一个windows桌面共享的项目，找了一系列的方法：&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 01 Sep 2014 23:20:00 +0800</lastBuildDate><item><title>Windows桌面共享2</title><link>http://fengyc.github.io/windowns-desktop-sharing-2.html</link><description>&lt;p&gt;经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。&lt;/p&gt;
+&lt;p&gt;我是使用C#来调用这个API的（本身是COM，可以由Visual Studio自动添加包装）。原型系统的代码分为服务器端（Sharer）和客户端（Attendee）,只是简单地把整个桌面全部共享出来。下面，是一些编程中的核心的内容。&lt;/p&gt;
+&lt;h2&gt;Sharer端&lt;/h2&gt;
+&lt;p&gt;在Sharer端，首先要引入API的COM，名称为&lt;code&gt;rdpcomapi 1.0 Type Library&lt;/code&gt;，文件路径为&lt;code&gt;C:\Windows\System32\rdpencom.dll&lt;/code&gt;。在引入的同时，Visual Studio会自动把这个COM进行包装，从而在项目的引用中可看到&lt;code&gt;RDPCOMAPILib&lt;/code&gt;这个库，而查看其属性，会看到路径为项目某个目录下的&lt;code&gt;Interop.RDPCOMAPILib.dll&lt;/code&gt;。在引入之后，可通过Visual Studio的对象查看器，查看这个dll里面包含的内容。&lt;/p&gt;
+&lt;p&gt;Sharer端，以&lt;code&gt;RDPSession&lt;/code&gt;接口为突破口，其它的操作都围绕这个接口进行。首先，创建接口的实例（在测试中，Sharer端只用了一个实例）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;RDPSession&lt;/span&gt; &lt;span class="n"&gt;rdpSession&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;RDPSessionClass&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后，就需要在这个实例正式开始连接之前，做初始化的准备，比如属性设置：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rdpSession&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Properties&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;DrvConAttach&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面是在1:M的模式下，微软建议使用mirror driver静态加载模式，具体请查看MSDN的相关内容。&lt;/p&gt;
+&lt;p&gt;Desktop Sharing支持应用程序和窗口过滤，只需要在RDPSession中进行简单的设置，即可以把不需要的共享的应用程序和窗口屏蔽。根据MSDN上的说法，这个过程分成两种，如果应用程序被共享，那么它的窗口不管是什么共享状态，都会被共享；如果应用程序被禁止共享，那么则要根据窗口的共享状态来决定是否共享。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rdpSession&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ApplicationFilter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Enabled&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;RDPSRAPIApplicationList&lt;/span&gt; &lt;span class="n"&gt;appList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rdpSession&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ApplicationFilter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Applications&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;RDPSRAPIWindowList&lt;/span&gt; &lt;span class="n"&gt;windownList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rdpSession&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ApplicationFilter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="err"&gt;……&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上内容进行应用程序和窗口过滤。&lt;/p&gt;
+&lt;p&gt;还可以对一系列的事件进行监听，对Attendee连接、应用状态变化、窗口状态变化等等，进行事件处理，具体的通过&lt;code&gt;RDPSession.On*&lt;/code&gt;来处理。&lt;/p&gt;
+&lt;p&gt;完成初始化之后，通过&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rdpSession&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Open&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;正式开启共享会话。在Win7上，这时会提示&lt;code&gt;正在运行的程序与windows 的某些可视元素不兼容&lt;/code&gt;，我怀疑这是mirror driver的问题，我调试时查看了&lt;code&gt;rdpSession.colordepth&lt;/code&gt;，发现只有24位。&lt;/p&gt;
+&lt;p&gt;此后，就需要通过创建&lt;code&gt;Invitation&lt;/code&gt;，建立会话邀请：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RDPSRAPIInvitation&lt;/span&gt; &lt;span class="n"&gt;invitation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rdpSession&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Invitations&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CreateInvitation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;123&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;123&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;123&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;connString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;invitation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ConnectionString&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ConnectionString是一个简单xml格式的字符串，包含了Sharer主机多个IP信息，还有一个类似于一次性邀请码之类的字符串。ConnectionString最好是能自动传递，避免人工输入时出错。Attendee端在加入到会话时，需要到这个字符串。&lt;/p&gt;
+&lt;h2&gt;Attendee端&lt;/h2&gt;
+&lt;p&gt;Attendee端的工作相对简单一点。&lt;/p&gt;
+&lt;p&gt;首先，Attendee端要引入AxRDPViewer控件。在Visual Studio的&lt;code&gt;工具箱&lt;/code&gt;窗口，右键-&amp;gt;选择项，找到AxRDPViewer控件，加入到&lt;code&gt;工具箱&lt;/code&gt;中。&lt;/p&gt;
+&lt;p&gt;直接把AxRDPViewer控件拉到一个窗口，设置名字为rdpViewer。&lt;/p&gt;
+&lt;p&gt;按照Sharer的设置，rdpViewer也需要设置相关的properties，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rdpViewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Properties&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;PortId&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4580&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;rdpViewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Properties&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;PortProtocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="err"&gt;……&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果需要监听会话事件，与Sharer端一样，设置相应的&lt;code&gt;rdpView.On*&lt;/code&gt;处理事件。&lt;/p&gt;
+&lt;h2&gt;性能和评估&lt;/h2&gt;
+&lt;p&gt;Win7下的RDP，有专门的mirror driver驱动，性能比普通的截图方式要好很多。在使用普通的办公软件的话，如果没有大规模的刷新，大概占用20-40KB/S左右。但是遇到像播放视频这种，是需要到很大的带宽的。试过一个高清的视频，分辨率为1024x576，播放时占用了5-6MB/S左右，这也是没有办法的事:-(&lt;/p&gt;
+&lt;p&gt;目前，我并没有找到Desktop Sharing的组播或广播方式。如果只能以点对点进行桌面共享，是无法适应大规模的演示、上课等需求的。国内这方面的公开资料并不多，可能都是各家厂商的核心技术所在。看到一些帖子，说是通过GDI勾子或者是mirror driver的方式实现，原理上感觉还算是靠谱。&lt;/p&gt;
+&lt;p&gt;利用这个功能，还是可以做一个简单的小组共享软件，在人数不多的情况下，效果还可以。我准备有空的时间弄一个玩玩。&lt;/p&gt;
+&lt;p&gt;真正要实现大规模的桌面共享，看来还需要看看mirror driver相关的内容，需要自己手工截图进行，进行UDP广播。带有Desktop Sharing的Windows，都会有RDP Encoder Mirror Driver，可以试着用一用，具体看&lt;a href="http://www.codeproject.com/Articles/716128/Using-RDP-Encoder-Mirror-Driver-to-Capture-Screen" title="使用RDP的Mirror Driver"&gt;Using "RDP Encoder Mirror Driver" to Capture Screen&lt;/a&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Mon, 01 Sep 2014 23:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-01:windowns-desktop-sharing-2.html</guid><category>tech</category><category>windows</category><category>C#</category></item><item><title>Windows桌面共享</title><link>http://fengyc.github.io/windows-desktop-sharing.html</link><description>&lt;p&gt;最近在做一个windows桌面共享的项目，找了一系列的方法：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;视频广播方式&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;视频广播方式可能是最具备跨平台特性的方式。在本地程序录制桌面的视频，或者基于硬件直接录制然后播放，然后实时发送到各个客户端。这种思想有很多的实现方式，而且整个结构很容易理解和扩展。&lt;/p&gt;
 &lt;p&gt;录制的方式，总结了一下，找到下面的录制方式：&lt;/p&gt;
