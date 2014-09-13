@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-01T23:20:00+08:00</updated><entry><title>Windows桌面共享2</title><link href="http://fengyc.github.io/windowns-desktop-sharing-2.html" rel="alternate"></link><updated>2014-09-01T23:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-01:windowns-desktop-sharing-2.html</id><summary type="html">&lt;p&gt;经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-13T21:15:00+08:00</updated><entry><title>常用Linux命令</title><link href="http://fengyc.github.io/chang-yong-linuxming-ling.html" rel="alternate"></link><updated>2014-09-13T13:57:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:chang-yong-linuxming-ling.html</id><summary type="html">&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; shell中判断 &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;if&lt;/code&gt;进行判断&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;condition&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="cp"&gt;]&lt;/span&gt;; then
+    # Do something
+fi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;包含多个分支，使用&lt;code&gt;if-elif&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;condition&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="cp"&gt;]&lt;/span&gt;; then
+    # Do something
+elif &lt;span class="cp"&gt;[&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;condition&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="cp"&gt;]&lt;/span&gt;; then
+    # Do somethin
+fi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt; watch查看命令多次执行的结果 &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;watch能多次执行命令，并把命令的结果显示出来，支持每隔n秒执行一次命令，并把执行结果的差异显示。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;watch&lt;/span&gt; &lt;span class="na"&gt;-n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="na"&gt;-d&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="tech"></category><category term="linux"></category><category term="shell"></category></entry><entry><title>Windows桌面共享2</title><link href="http://fengyc.github.io/windowns-desktop-sharing-2.html" rel="alternate"></link><updated>2014-09-01T23:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-01:windowns-desktop-sharing-2.html</id><summary type="html">&lt;p&gt;经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。&lt;/p&gt;
 &lt;p&gt;我是使用C#来调用这个API的（本身是COM，可以由Visual Studio自动添加包装）。原型系统的代码分为服务器端（Sharer）和客户端（Attendee）,只是简单地把整个桌面全部共享出来。下面，是一些编程中的核心的内容。&lt;/p&gt;
 &lt;h2&gt;Sharer端&lt;/h2&gt;
 &lt;p&gt;在Sharer端，首先要引入API的COM，名称为&lt;code&gt;rdpcomapi 1.0 Type Library&lt;/code&gt;，文件路径为&lt;code&gt;C:\Windows\System32\rdpencom.dll&lt;/code&gt;。在引入的同时，Visual Studio会自动把这个COM进行包装，从而在项目的引用中可看到&lt;code&gt;RDPCOMAPILib&lt;/code&gt;这个库，而查看其属性，会看到路径为项目某个目录下的&lt;code&gt;Interop.RDPCOMAPILib.dll&lt;/code&gt;。在引入之后，可通过Visual Studio的对象查看器，查看这个dll里面包含的内容。&lt;/p&gt;
@@ -154,7 +175,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</summary><category term="tech"></category><category term="python"></category></entry><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/git-commands.html" rel="alternate"></link><updated>2014-08-29T21:15:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:git-commands.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
+&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</summary><category term="tech"></category><category term="python"></category></entry><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/gitchang-yong-ming-ling.html" rel="alternate"></link><updated>2014-09-13T21:15:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:gitchang-yong-ming-ling.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
 &lt;!-- PELICAN_END_SUMMARY --&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;下载远程仓库&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -173,6 +194,11 @@
 
 &lt;p&gt;&lt;strong&gt;在本地工作目录指定远程仓库&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;remote&lt;/span&gt; &lt;span class="nb"&gt;add&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;取消本地修改&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;checkout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
