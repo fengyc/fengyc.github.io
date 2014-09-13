@@ -64,6 +64,48 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/chang-yong-linuxming-ling.html" rel="bookmark" title="Permalink to 常用Linux命令">常用Linux命令</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-13T13:57:00"> 六 13 九月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。</p>
+<p><strong> shell中判断 </strong></p>
+<p>使用<code>if</code>进行判断</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="err">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
+    # Do something
+fi
+</pre></div>
+
+
+<p>包含多个分支，使用<code>if-elif</code></p>
+<div class="highlight"><pre><span class="k">if</span> <span class="err">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
+    # Do something
+elif <span class="cp">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
+    # Do somethin
+fi
+</pre></div>
+
+
+<p><strong> watch查看命令多次执行的结果 </strong></p>
+<p>watch能多次执行命令，并把命令的结果显示出来，支持每隔n秒执行一次命令，并把执行结果的差异显示。</p>
+<div class="highlight"><pre><span class="nx">watch</span> <span class="na">-n</span> <span class="o">&lt;</span><span class="nx">seconds</span><span class="o">&gt;</span> <span class="na">-d</span> <span class="o">&lt;</span><span class="nx">commands</span><span class="o">&gt;</span>
+</pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://fengyc.github.io/chang-yong-linuxming-ling.html" rel="bookmark" title="Permalink to 常用Linux命令">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
+											<a class="danger label" href="http://fengyc.github.io/tag/linux.html">linux</a>
+											<a class="danger label" href="http://fengyc.github.io/tag/shell.html">shell</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/windowns-desktop-sharing-2.html" rel="bookmark" title="Permalink to Windows桌面共享2">Windows桌面共享2</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-09-01T23:20:00"> 一 01 九月 2014 </abbr>
@@ -174,7 +216,7 @@
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/git-commands.html" rel="bookmark" title="Permalink to git常用命令">git常用命令</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/gitchang-yong-ming-ling.html" rel="bookmark" title="Permalink to git常用命令">git常用命令</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-08-24T17:40:00"> 日 24 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
@@ -200,6 +242,11 @@
 </pre></div>
 
 
+<p><strong>取消本地修改</strong></p>
+<div class="highlight"><pre><span class="nx">git</span> <span class="nx">checkout</span> <span class="o">&lt;</span><span class="nb">FILE</span><span class="o">&gt;</span>
+</pre></div>
+
+
 <p><strong>查看远程仓库</strong><br />
 当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">remove</span> <span class="o">-</span><span class="n">v</span>
@@ -213,9 +260,9 @@
 
 
 <p><strong>删除子模块</strong><br />
-很奇怪，并没有<code>git submodule remove/delete</code>命令，只能通过先删除子模块目录 ...</p> </div><!-- /.entry-content -->
+很奇怪，并没有<code>git submodule ...</code></p> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://fengyc.github.io/git-commands.html" rel="bookmark" title="Permalink to git常用命令">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://fengyc.github.io/gitchang-yong-ming-ling.html" rel="bookmark" title="Permalink to git常用命令">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
@@ -297,14 +344,16 @@
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
-	    <li class="tag-1"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
 	    <li class="tag-1"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
-	    <li class="tag-1"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/shell.html">shell</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
 </ul>
 
 
