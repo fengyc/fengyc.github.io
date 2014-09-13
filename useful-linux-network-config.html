@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>git常用命令</title>
+        <title>Linux网络配置</title>
         <meta charset="utf-8" />
         <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Full Atom Feed" />
         <link href="http://fengyc.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Categories Atom Feed" />
@@ -62,74 +62,77 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://fengyc.github.io/gitchang-yong-ming-ling.html" rel="bookmark"
-                   title="Permalink to git常用命令">git常用命令</a></h2>
+                <a href="http://fengyc.github.io/useful-linux-network-config.html" rel="bookmark"
+                   title="Permalink to Linux网络配置">Linux网络配置</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-08-24T17:40:00">
-                日 24 八月 2014
+              <abbr class="published" title="2014-09-13T20:20:00">
+                六 13 九月 2014
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>本文章记录了git的日常使用中的常用命令。
-<!-- PELICAN_END_SUMMARY --></p>
-<p><strong>下载远程仓库</strong></p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">clone</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
+              <h2>Ubuntu停用Network Manager</h2>
+<p>Desktop版本的Ubuntu，使用Network Manager来进行网络管理，它会导致在<code>/etc/network/interface</code>中的设置不生效。由于在进行一些网络功能的开发时，需要用到<code>/etc/network/interface</code>文件管理网络，需要停用Network Manager。</p>
+<div class="highlight"><pre><span class="n">service</span> <span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="n">stop</span>
 </pre></div>
 
 
-<p><strong>更新</strong>  </p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">pull</span>
+<p>并向<code>/etc/network/interface</code>中写入具体的配置</p>
+<div class="highlight"><pre><span class="n">cat</span><span class="o">&gt;&gt;/</span><span class="n">etc</span><span class="o">/</span><span class="n">network</span><span class="o">/</span><span class="n">interface</span><span class="o">&lt;&lt;</span><span class="n">EOF</span>
+<span class="k">auto</span> <span class="n">eth0</span>
+<span class="n">iface</span> <span class="n">eth0</span> <span class="n">inet</span> <span class="k">static</span>
+<span class="n">address</span> <span class="mf">192.168.0.128</span>
+<span class="n">netmask</span> <span class="mf">255.255.255.0</span>
+<span class="n">gateway</span> <span class="mf">192.168.0.1</span>
+<span class="n">dns</span><span class="o">-</span><span class="n">nameservers</span> <span class="mf">192.168.0.1</span>
+<span class="n">EOF</span>
 </pre></div>
 
 
-<p><strong>推送</strong></p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span>
+<p>然后，使用</p>
+<div class="highlight"><pre><span class="n">ifdown</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">lo</span> <span class="o">-</span><span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">ifup</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">lo</span> <span class="o">-</span><span class="n">a</span>
 </pre></div>
 
 
-<p><strong>在本地工作目录指定远程仓库</strong></p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">remote</span> <span class="nb">add</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
+<p>把网络重启。</p>
+<h2>为网卡增加配置多个IP</h2>
+<p>为了区分各个网络，需要使用多个网段。而在只有一个网卡的时候，就需要为这个网卡配置多个IP。实现的手段有两种：</p>
+<ol>
+<li>
+<p>配置虚拟网络接口<br />
+在<code>/etc/network/interface</code>中，增加类似<code>eth0:1</code>的接口，如：</p>
+<div class="highlight"><pre><span class="k">auto</span> <span class="n">eth0</span><span class="o">:</span><span class="mi">1</span>
+<span class="n">iface</span> <span class="n">eth0</span><span class="o">:</span><span class="mi">1</span> <span class="n">inet</span> <span class="k">static</span>
+<span class="n">address</span> <span class="n">a</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">d</span>
+<span class="n">netmask</span> <span class="n">a</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">d</span>
 </pre></div>
 
 
-<p><strong>取消本地修改</strong></p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">checkout</span> <span class="o">&lt;</span><span class="nb">FILE</span><span class="o">&gt;</span>
+</li>
+<li>
+<p>通过<code>ip addr add</code>命令<br />
+<code>ip addr add</code>命令在网卡上增加一个地址，如：</p>
+<div class="highlight"><pre><span class="n">ip</span> <span class="n">addr</span> <span class="n">add</span> <span class="mf">192.168.0.128</span><span class="o">/</span><span class="mi">24</span> <span class="n">dev</span> <span class="n">eth0</span>
 </pre></div>
 
 
-<p><strong>查看远程仓库</strong><br />
-当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">remove</span> <span class="o">-</span><span class="n">v</span>
+</li>
+</ol>
+<h2>Linux中DNS配置</h2>
+<p>一般，应该通过<code>/etc/network/interface</code>文件设置<code>dns-nameservers</code>来配置，<code>interface</code>文件中的配置，会被解析并自动更新到<code>/etc/resolv.conf</code>文件中。</p>
+<p>如果需要临时修改DNS配置，也可以直接把DNS写入到<code>resolv.conf</code>中，如：</p>
+<div class="highlight"><pre><span class="n">echo</span> <span class="err">&#39;</span><span class="n">nameserver</span> <span class="mf">8.8.4.4</span><span class="err">&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
-
-
-<p><strong>添加子模块</strong><br />
-当项目需要引用到其它git仓库时，使用子模块</p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">submodule</span> <span class="nb">add</span> <span class="nx">origin</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p><strong>删除子模块</strong><br />
-很奇怪，并没有<code>git submodule remove/delete</code>命令，只能通过先删除子模块目录，然后调整<code>.gitmodules</code>文件来实现</p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">rm</span> <span class="o">--</span><span class="k">cache</span> <span class="o">&lt;</span><span class="nb">DIR</span><span class="o">&gt;</span>
-<span class="nx">rm</span> <span class="na">-rf</span> <span class="o">&lt;</span><span class="nb">DIR</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p>然后修改<code>.gitmodules</code>实现</p>
-<hr />
-<p>Yingcai FENG</p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "gitchang-yong-ming-ling.html";
+                var disqus_identifier = "useful-linux-network-config.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://zenmass.disqus.com/embed.js';
