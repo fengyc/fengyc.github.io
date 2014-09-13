@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-13T21:15:00+08:00</updated><entry><title>常用Linux命令</title><link href="http://fengyc.github.io/chang-yong-linuxming-ling.html" rel="alternate"></link><updated>2014-09-13T13:57:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:chang-yong-linuxming-ling.html</id><summary type="html">&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-13T21:15:00+08:00</updated><entry><title>Linux网络配置</title><link href="http://fengyc.github.io/useful-linux-network-config.html" rel="alternate"></link><updated>2014-09-13T20:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:useful-linux-network-config.html</id><summary type="html">&lt;h2&gt;Ubuntu停用Network Manager&lt;/h2&gt;
+&lt;p&gt;Desktop版本的Ubuntu，使用Network Manager来进行网络管理，它会导致在&lt;code&gt;/etc/network/interface&lt;/code&gt;中的设置不生效。由于在进行一些网络功能的开发时，需要用到&lt;code&gt;/etc/network/interface&lt;/code&gt;文件管理网络，需要停用Network Manager。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;manager&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;并向&lt;code&gt;/etc/network/interface&lt;/code&gt;中写入具体的配置&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;interface&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;EOF&lt;/span&gt;
+&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt;
+&lt;span class="n"&gt;iface&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt; &lt;span class="n"&gt;inet&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt;
+&lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="mf"&gt;192.168.0.128&lt;/span&gt;
+&lt;span class="n"&gt;netmask&lt;/span&gt; &lt;span class="mf"&gt;255.255.255.0&lt;/span&gt;
+&lt;span class="n"&gt;gateway&lt;/span&gt; &lt;span class="mf"&gt;192.168.0.1&lt;/span&gt;
+&lt;span class="n"&gt;dns&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nameservers&lt;/span&gt; &lt;span class="mf"&gt;192.168.0.1&lt;/span&gt;
+&lt;span class="n"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后，使用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ifdown&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;exclude&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;lo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;ifup&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;exclude&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;lo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;把网络重启。&lt;/p&gt;
+&lt;h2&gt;为网卡增加配置多个IP&lt;/h2&gt;
+&lt;p&gt;为了区分各个网络，需要使用多个网段。而在只有一个网卡的时候，就需要为这个网卡配置多个IP。实现的手段有两种：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;配置虚拟网络接口&lt;br /&gt;
+在&lt;code&gt;/etc/network/interface&lt;/code&gt;中，增加类似&lt;code&gt;eth0:1&lt;/code&gt;的接口，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;iface&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;inet&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt;
+&lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;
+&lt;span class="n"&gt;netmask&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过&lt;code&gt;ip addr add&lt;/code&gt;命令&lt;br /&gt;
+&lt;code&gt;ip addr add&lt;/code&gt;命令在网卡上增加一个地址，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="n"&gt;addr&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="mf"&gt;192.168.0.128&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt; &lt;span class="n"&gt;dev&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Linux中DNS配置&lt;/h2&gt;
+&lt;p&gt;一般，应该通过&lt;code&gt;/etc/network/interface&lt;/code&gt;文件设置&lt;code&gt;dns-nameservers&lt;/code&gt;来配置，&lt;code&gt;interface&lt;/code&gt;文件中的配置，会被解析并自动更新到&lt;code&gt;/etc/resolv.conf&lt;/code&gt;文件中。&lt;/p&gt;
+&lt;p&gt;如果需要临时修改DNS配置，也可以直接把DNS写入到&lt;code&gt;resolv.conf&lt;/code&gt;中，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;nameserver&lt;/span&gt; &lt;span class="mf"&gt;8.8.4.4&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;resolv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="tech"></category><category term="linux"></category></entry><entry><title>常用Linux命令</title><link href="http://fengyc.github.io/chang-yong-linuxming-ling.html" rel="alternate"></link><updated>2014-09-13T13:57:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:chang-yong-linuxming-ling.html</id><summary type="html">&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; shell中判断 &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;if&lt;/code&gt;进行判断&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;condition&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="cp"&gt;]&lt;/span&gt;; then
