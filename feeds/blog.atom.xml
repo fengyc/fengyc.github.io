@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-13T21:15:00+08:00</updated><entry><title>Linux网络配置</title><link href="http://fengyc.github.io/useful-linux-network-config.html" rel="alternate"></link><updated>2014-09-13T20:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:useful-linux-network-config.html</id><summary type="html">&lt;h2&gt;Ubuntu停用Network Manager&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-14T21:55:00+08:00</updated><entry><title>使用devstack部署openstack环境</title><link href="http://fengyc.github.io/use-devstack-deploy-openstack.html" rel="alternate"></link><updated>2014-09-14T21:55:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-14:use-devstack-deploy-openstack.html</id><summary type="html">&lt;p&gt;devstack是一套openstack的部署脚本，对openstack初学者而言，是最好不过的openstack部署脚本了。&lt;/p&gt;
+&lt;p&gt;devstack的官方网站为&lt;code&gt;devstack.org&lt;/code&gt;。官方网站上已经对devstack的用途有介绍，这里介绍一下我在测试中使用到的一些注意问题。&lt;/p&gt;
+&lt;p&gt;devstack整套脚本放在github中，使用下面的命令clone到本地：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/openstack-dev/devstack.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下载完成后，需要进行一个简单的配置的，在官网中给出了一个最小的配置&lt;a href="http://devstack.org/configuration.html" title="Devstack minimal configuration"&gt;devstack-mini-config&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;然后，进入到目录中，以&lt;strong&gt;普通用户&lt;/strong&gt;的权限执行stack.sh，进行openstack的安装。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;devstack&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="tech"></category><category term="openstack"></category></entry><entry><title>Linux网络配置</title><link href="http://fengyc.github.io/useful-linux-network-config.html" rel="alternate"></link><updated>2014-09-13T20:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:useful-linux-network-config.html</id><summary type="html">&lt;h2&gt;Ubuntu停用Network Manager&lt;/h2&gt;
 &lt;p&gt;Desktop版本的Ubuntu，使用Network Manager来进行网络管理，它会导致在&lt;code&gt;/etc/network/interface&lt;/code&gt;中的设置不生效。由于在进行一些网络功能的开发时，需要用到&lt;code&gt;/etc/network/interface&lt;/code&gt;文件管理网络，需要停用Network Manager。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;manager&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -50,7 +60,7 @@
 &lt;p&gt;一般，应该通过&lt;code&gt;/etc/network/interface&lt;/code&gt;文件设置&lt;code&gt;dns-nameservers&lt;/code&gt;来配置，&lt;code&gt;interface&lt;/code&gt;文件中的配置，会被解析并自动更新到&lt;code&gt;/etc/resolv.conf&lt;/code&gt;文件中。&lt;/p&gt;
 &lt;p&gt;如果需要临时修改DNS配置，也可以直接把DNS写入到&lt;code&gt;resolv.conf&lt;/code&gt;中，如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;nameserver&lt;/span&gt; &lt;span class="mf"&gt;8.8.4.4&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;resolv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="tech"></category><category term="linux"></category></entry><entry><title>常用Linux命令</title><link href="http://fengyc.github.io/chang-yong-linuxming-ling.html" rel="alternate"></link><updated>2014-09-13T13:57:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:chang-yong-linuxming-ling.html</id><summary type="html">&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="tech"></category><category term="linux"></category></entry><entry><title>常用Linux命令</title><link href="http://fengyc.github.io/useful-linux-commands.html" rel="alternate"></link><updated>2014-09-13T13:57:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-13:useful-linux-commands.html</id><summary type="html">&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; shell中判断 &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;if&lt;/code&gt;进行判断&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;condition&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="cp"&gt;]&lt;/span&gt;; then
@@ -226,7 +236,7 @@ fi
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</summary><category term="tech"></category><category term="python"></category></entry><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/gitchang-yong-ming-ling.html" rel="alternate"></link><updated>2014-09-13T21:15:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:gitchang-yong-ming-ling.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
+&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</summary><category term="tech"></category><category term="python"></category></entry><entry><title>关于</title><link href="http://fengyc.github.io/about.html" rel="alternate"></link><updated>2014-08-26T20:13:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-26:about.html</id><summary type="html">&lt;p&gt;先空着&lt;/p&gt;</summary><category term="about"></category></entry><entry><title>git常用命令</title><link href="http://fengyc.github.io/useful-git-commands.html" rel="alternate"></link><updated>2014-09-14T17:40:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-08-24:useful-git-commands.html</id><summary type="html">&lt;p&gt;本文章记录了git的日常使用中的常用命令。
 &lt;!-- PELICAN_END_SUMMARY --&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;下载远程仓库&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -261,7 +271,18 @@ fi
 
 &lt;p&gt;&lt;strong&gt;添加子模块&lt;/strong&gt;&lt;br /&gt;
 当项目需要引用到其它git仓库时，使用子模块&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;submodule&lt;/span&gt; &lt;span class="nb"&gt;add&lt;/span&gt; &lt;span class="nx"&gt;origin&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;submodule&lt;/span&gt; &lt;span class="nb"&gt;add&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;子模块初始化&lt;/strong&gt;
+当一个git仓库被clone下来之后，子模块并不会被自动下载下来，使用下面的命令初始化各个子模块：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;recursive&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;某些时候，当子模块的目录存在的时候，会导致初始化出错，这时候，直接删除子模块的目录：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;子模块目录&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

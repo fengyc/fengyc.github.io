@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 13 Sep 2014 21:15:00 +0800</lastBuildDate><item><title>Linux网络配置</title><link>http://fengyc.github.io/useful-linux-network-config.html</link><description>&lt;h2&gt;Ubuntu停用Network Manager&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zenmass</title><link>http://fengyc.github.io/</link><description></description><atom:link href="http://fengyc.github.io/feeds/yingcai-feng.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 14 Sep 2014 21:55:00 +0800</lastBuildDate><item><title>使用devstack部署openstack环境</title><link>http://fengyc.github.io/use-devstack-deploy-openstack.html</link><description>&lt;p&gt;devstack是一套openstack的部署脚本，对openstack初学者而言，是最好不过的openstack部署脚本了。&lt;/p&gt;
+&lt;p&gt;devstack的官方网站为&lt;code&gt;devstack.org&lt;/code&gt;。官方网站上已经对devstack的用途有介绍，这里介绍一下我在测试中使用到的一些注意问题。&lt;/p&gt;
+&lt;p&gt;devstack整套脚本放在github中，使用下面的命令clone到本地：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/openstack-dev/devstack.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下载完成后，需要进行一个简单的配置的，在官网中给出了一个最小的配置&lt;a href="http://devstack.org/configuration.html" title="Devstack minimal configuration"&gt;devstack-mini-config&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;然后，进入到目录中，以&lt;strong&gt;普通用户&lt;/strong&gt;的权限执行stack.sh，进行openstack的安装。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;devstack&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sun, 14 Sep 2014 21:55:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-14:use-devstack-deploy-openstack.html</guid><category>tech</category><category>openstack</category></item><item><title>Linux网络配置</title><link>http://fengyc.github.io/useful-linux-network-config.html</link><description>&lt;h2&gt;Ubuntu停用Network Manager&lt;/h2&gt;
 &lt;p&gt;Desktop版本的Ubuntu，使用Network Manager来进行网络管理，它会导致在&lt;code&gt;/etc/network/interface&lt;/code&gt;中的设置不生效。由于在进行一些网络功能的开发时，需要用到&lt;code&gt;/etc/network/interface&lt;/code&gt;文件管理网络，需要停用Network Manager。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;manager&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -50,7 +60,7 @@
 &lt;p&gt;一般，应该通过&lt;code&gt;/etc/network/interface&lt;/code&gt;文件设置&lt;code&gt;dns-nameservers&lt;/code&gt;来配置，&lt;code&gt;interface&lt;/code&gt;文件中的配置，会被解析并自动更新到&lt;code&gt;/etc/resolv.conf&lt;/code&gt;文件中。&lt;/p&gt;
 &lt;p&gt;如果需要临时修改DNS配置，也可以直接把DNS写入到&lt;code&gt;resolv.conf&lt;/code&gt;中，如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;nameserver&lt;/span&gt; &lt;span class="mf"&gt;8.8.4.4&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;resolv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sat, 13 Sep 2014 20:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-13:useful-linux-network-config.html</guid><category>tech</category><category>linux</category></item><item><title>常用Linux命令</title><link>http://fengyc.github.io/chang-yong-linuxming-ling.html</link><description>&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sat, 13 Sep 2014 20:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-13:useful-linux-network-config.html</guid><category>tech</category><category>linux</category></item><item><title>常用Linux命令</title><link>http://fengyc.github.io/useful-linux-commands.html</link><description>&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; shell中判断 &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;if&lt;/code&gt;进行判断&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;condition&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="cp"&gt;]&lt;/span&gt;; then
@@ -71,7 +81,7 @@ fi
 &lt;p&gt;&lt;strong&gt; watch查看命令多次执行的结果 &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;watch能多次执行命令，并把命令的结果显示出来，支持每隔n秒执行一次命令，并把执行结果的差异显示。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;watch&lt;/span&gt; &lt;span class="na"&gt;-n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="na"&gt;-d&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sat, 13 Sep 2014 13:57:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-13:chang-yong-linuxming-ling.html</guid><category>tech</category><category>linux</category><category>shell</category></item><item><title>Windows桌面共享2</title><link>http://fengyc.github.io/windowns-desktop-sharing-2.html</link><description>&lt;p&gt;经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sat, 13 Sep 2014 13:57:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-13:useful-linux-commands.html</guid><category>tech</category><category>linux</category><category>shell</category></item><item><title>Windows桌面共享2</title><link>http://fengyc.github.io/windowns-desktop-sharing-2.html</link><description>&lt;p&gt;经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。&lt;/p&gt;
 &lt;p&gt;我是使用C#来调用这个API的（本身是COM，可以由Visual Studio自动添加包装）。原型系统的代码分为服务器端（Sharer）和客户端（Attendee）,只是简单地把整个桌面全部共享出来。下面，是一些编程中的核心的内容。&lt;/p&gt;
 &lt;h2&gt;Sharer端&lt;/h2&gt;
 &lt;p&gt;在Sharer端，首先要引入API的COM，名称为&lt;code&gt;rdpcomapi 1.0 Type Library&lt;/code&gt;，文件路径为&lt;code&gt;C:\Windows\System32\rdpencom.dll&lt;/code&gt;。在引入的同时，Visual Studio会自动把这个COM进行包装，从而在项目的引用中可看到&lt;code&gt;RDPCOMAPILib&lt;/code&gt;这个库，而查看其属性，会看到路径为项目某个目录下的&lt;code&gt;Interop.RDPCOMAPILib.dll&lt;/code&gt;。在引入之后，可通过Visual Studio的对象查看器，查看这个dll里面包含的内容。&lt;/p&gt;
@@ -226,7 +236,7 @@ fi
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Thu, 28 Aug 2014 20:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-28:virtualenv.html</guid><category>tech</category><category>python</category></item><item><title>关于</title><link>http://fengyc.github.io/about.html</link><description>&lt;p&gt;先空着&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Tue, 26 Aug 2014 20:13:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-26:about.html</guid><category>about</category></item><item><title>git常用命令</title><link>http://fengyc.github.io/gitchang-yong-ming-ling.html</link><description>&lt;p&gt;本文章记录了git的日常使用中的常用命令。
+&lt;p&gt;Yingcai FENG at SYSU&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Thu, 28 Aug 2014 20:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-28:virtualenv.html</guid><category>tech</category><category>python</category></item><item><title>关于</title><link>http://fengyc.github.io/about.html</link><description>&lt;p&gt;先空着&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Tue, 26 Aug 2014 20:13:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-26:about.html</guid><category>about</category></item><item><title>git常用命令</title><link>http://fengyc.github.io/useful-git-commands.html</link><description>&lt;p&gt;本文章记录了git的日常使用中的常用命令。
 &lt;!-- PELICAN_END_SUMMARY --&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;下载远程仓库&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -261,7 +271,18 @@ fi
 
 &lt;p&gt;&lt;strong&gt;添加子模块&lt;/strong&gt;&lt;br /&gt;
 当项目需要引用到其它git仓库时，使用子模块&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;submodule&lt;/span&gt; &lt;span class="nb"&gt;add&lt;/span&gt; &lt;span class="nx"&gt;origin&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nx"&gt;submodule&lt;/span&gt; &lt;span class="nb"&gt;add&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;URL&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;子模块初始化&lt;/strong&gt;
+当一个git仓库被clone下来之后，子模块并不会被自动下载下来，使用下面的命令初始化各个子模块：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;recursive&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;某些时候，当子模块的目录存在的时候，会导致初始化出错，这时候，直接删除子模块的目录：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;子模块目录&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -274,7 +295,7 @@ fi
 
 &lt;p&gt;然后修改&lt;code&gt;.gitmodules&lt;/code&gt;实现&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Yingcai FENG&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sat, 13 Sep 2014 21:15:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-24:gitchang-yong-ming-ling.html</guid><category>git</category></item><item><title>利用pelican在github上搭建博客的办法</title><link>http://fengyc.github.io/pelican-github-blog.html</link><description>&lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
+&lt;p&gt;Yingcai FENG&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sun, 14 Sep 2014 17:40:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-08-24:useful-git-commands.html</guid><category>git</category></item><item><title>利用pelican在github上搭建博客的办法</title><link>http://fengyc.github.io/pelican-github-blog.html</link><description>&lt;p&gt;发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。&lt;/p&gt;
 &lt;p&gt;pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)&lt;/p&gt;
 &lt;p&gt;这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
