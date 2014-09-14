@@ -1,4 +1,5 @@
 Title: 常用Linux命令
+Slug: useful-linux-commands
 Date: 2014-09-13 13:57
 Modified: 2014-09-13 13:57
 Category: blog
