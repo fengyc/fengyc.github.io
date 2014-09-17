@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>关于</title>
+        <title>Openstack中使用Keypair连接到VM</title>
         <meta charset="utf-8" />
         <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Full Atom Feed" />
         <link href="http://fengyc.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Categories Atom Feed" />
@@ -62,26 +62,31 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://fengyc.github.io/about.html" rel="bookmark"
-                   title="Permalink to 关于">关于</a></h2>
+                <a href="http://fengyc.github.io/using-keypair-connect-vm.html" rel="bookmark"
+                   title="Permalink to Openstack中使用Keypair连接到VM">Openstack中使用Keypair连接到VM</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-08-26T20:13:00">
-                二 26 八月 2014
+              <abbr class="published" title="2014-09-17T14:33:00">
+                三 17 九月 2014
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>先空着</p>
+              <p>通常，系统的用户名和密码都是安装过程中指定的，然后通过安全的渠道交到最终使用者的手中。这种传统的方式在进行大规模的服务器管理时就非常麻烦，因为每台机器都需要指定用户名和密码，导致需要管理的密码数量非常庞大。如果需要更改密码，还需要逐个来修改！！</p>
+<p>在云计算中无法使用这种方式来管理虚拟机系统。镜像的开发者无法得知谁是最终的用户，最终用户无法确保开发者会不会用默认的用户名和密码来干坏事。</p>
+<p>因此，云计算普通会采用一种在系统第一次运行时把用户名密码注入到系统的办法，Openstack与Amazon的AWS都使用这样的办法来管理，但是不是通过用户名密码，而是通过一对密钥对。密钥对是用户自己生成的，可以在多台服务器上使用，用户使用私钥连接到各个服务器。</p>
+<p>在Openstack Dashboard上，生成一对KeyPair。公钥保存在Openstack上，私钥在生成时直接下载到用户本地。Openstack的私钥保存为一个.pem文件。</p>
+<p>密钥对生成之后，在启动实例时，为VM指定一个此密钥对。那么在VM初始化时，当网络初始化完成之后，安装在VM系统里面的初始化工具，向<code>169.254.169.254</code>这个特殊的IP地址，向Openstack请求VM的元数据（metadata），元数据中包含了VM的密钥对中的公钥。然后，初始化工具把此公钥安装到<code>/root/.ssh/authorized_keys</code>中。</p>
+<p>putty可以使用私钥登录到VM上，但需要做一点工作。putty使用的私钥文件格式是<code>.ppk</code>，需要把<code>.pem</code>文件转换为<code>.ppk</code>文件。使用puttygen这个图形化工具，转换的工作十分简单，见<a href="http://winscp.net/eng/docs/ui_puttygen">winscp-puttygen</a>。</p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "about.html";
+                var disqus_identifier = "using-keypair-connect-vm.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://zenmass.disqus.com/embed.js';

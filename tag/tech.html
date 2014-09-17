@@ -63,6 +63,30 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/using-keypair-connect-vm.html" rel="bookmark" title="Permalink to Openstack中使用Keypair连接到VM">Openstack中使用Keypair连接到VM</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-17T14:33:00"> 三 17 九月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>通常，系统的用户名和密码都是安装过程中指定的，然后通过安全的渠道交到最终使用者的手中。这种传统的方式在进行大规模的服务器管理时就非常麻烦，因为每台机器都需要指定用户名和密码，导致需要管理的密码数量非常庞大。如果需要更改密码，还需要逐个来修改！！</p>
+<p>在云计算中无法使用这种方式来管理虚拟机系统。镜像的开发者无法得知谁是最终的用户，最终用户无法确保开发者会不会用默认的用户名和密码来干坏事。</p>
+<p>因此，云计算普通会采用一种在系统第一次运行时把用户名密码注入到系统的办法，Openstack与Amazon的AWS都使用这样的办法来管理，但是不是通过用户名密码，而是通过一对密钥对。密钥对是用户自己生成的，可以在多台服务器上使用，用户使用私钥连接到各个服务器。</p>
+<p>在Openstack Dashboard上，生成一对KeyPair。公钥保存在Openstack上，私钥在生成时直接下载到用户本地。Openstack的私钥保存为一个.pem文件。</p>
+<p>密钥对生成之后，在启动实例时，为VM指定一个此密钥对。那么在VM初始化时，当网络初始化完成之后，安装在VM系统里面的初始化工具，向<code>169.254.169.254</code>这个特殊的IP地址，向Openstack请求VM的元数据（metadata ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://fengyc.github.io/using-keypair-connect-vm.html" rel="bookmark" title="Permalink to Openstack中使用Keypair连接到VM">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
+											<a class="danger label" href="http://fengyc.github.io/tag/openstack.html">openstack</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/use-devstack-deploy-openstack.html" rel="bookmark" title="Permalink to 使用devstack部署openstack环境">使用devstack部署openstack环境</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-09-14T21:55:00"> 日 14 九月 2014 </abbr>
@@ -244,17 +268,17 @@ fi
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-2"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
-	    <li class="tag-2"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/openstack.html">openstack</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/shell.html">shell</a></li>
 	    <li class="tag-2"><a href="http://fengyc.github.io/tag/linux.html">linux</a></li>
-	    <li class="tag-1"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
+	    <li class="tag-0"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/shell.html">shell</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/openstack.html">openstack</a></li>
 </ul>
 
 
