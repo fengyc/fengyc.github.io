@@ -62,7 +62,7 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://fengyc.github.io/gitchang-yong-ming-ling.html" rel="bookmark"
+                <a href="http://fengyc.github.io/useful-git-commands.html" rel="bookmark"
                    title="Permalink to git常用命令">git常用命令</a></h2>
            
             </header>
@@ -110,7 +110,18 @@
 
 <p><strong>添加子模块</strong><br />
 当项目需要引用到其它git仓库时，使用子模块</p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">submodule</span> <span class="nb">add</span> <span class="nx">origin</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span class="nx">git</span> <span class="nx">submodule</span> <span class="nb">add</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p><strong>子模块初始化</strong>
+当一个git仓库被clone下来之后，子模块并不会被自动下载下来，使用下面的命令初始化各个子模块：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
+</pre></div>
+
+
+<p>某些时候，当子模块的目录存在的时候，会导致初始化出错，这时候，直接删除子模块的目录：</p>
+<div class="highlight"><pre><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">&lt;</span><span class="err">子模块目录</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -129,7 +140,7 @@
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "gitchang-yong-ming-ling.html";
+                var disqus_identifier = "useful-git-commands.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://zenmass.disqus.com/embed.js';
@@ -158,15 +169,16 @@
 <h4>Tags</h4>
 	<ul>
 	    <li class="tag-2"><a href="http://fengyc.github.io/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
 	    <li class="tag-2"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
-	    <li class="tag-1"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
+	    <li class="tag-0"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/shell.html">shell</a></li>
 	    <li class="tag-2"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/openstack.html">openstack</a></li>
 </ul>
 
 

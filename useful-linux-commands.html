@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>关于</title>
+        <title>常用Linux命令</title>
         <meta charset="utf-8" />
         <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Full Atom Feed" />
         <link href="http://fengyc.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Categories Atom Feed" />
@@ -62,26 +62,47 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://fengyc.github.io/about.html" rel="bookmark"
-                   title="Permalink to 关于">关于</a></h2>
+                <a href="http://fengyc.github.io/useful-linux-commands.html" rel="bookmark"
+                   title="Permalink to 常用Linux命令">常用Linux命令</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-08-26T20:13:00">
-                二 26 八月 2014
+              <abbr class="published" title="2014-09-13T13:57:00">
+                六 13 九月 2014
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>先空着</p>
+              <p>本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。</p>
+<p><strong> shell中判断 </strong></p>
+<p>使用<code>if</code>进行判断</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="err">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
+    # Do something
+fi
+</pre></div>
+
+
+<p>包含多个分支，使用<code>if-elif</code></p>
+<div class="highlight"><pre><span class="k">if</span> <span class="err">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
+    # Do something
+elif <span class="cp">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
+    # Do somethin
+fi
+</pre></div>
+
+
+<p><strong> watch查看命令多次执行的结果 </strong></p>
+<p>watch能多次执行命令，并把命令的结果显示出来，支持每隔n秒执行一次命令，并把执行结果的差异显示。</p>
+<div class="highlight"><pre><span class="nx">watch</span> <span class="na">-n</span> <span class="o">&lt;</span><span class="nx">seconds</span><span class="o">&gt;</span> <span class="na">-d</span> <span class="o">&lt;</span><span class="nx">commands</span><span class="o">&gt;</span>
+</pre></div>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "about.html";
+                var disqus_identifier = "useful-linux-commands.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://zenmass.disqus.com/embed.js';

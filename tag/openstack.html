@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>Zenmass - tech</title>
+        <title>Zenmass - openstack</title>
         <meta charset="utf-8" />
         <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Full Atom Feed" />
 
@@ -111,138 +111,6 @@
 										<span>Tagged as : </span>
 											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
 											<a class="danger label" href="http://fengyc.github.io/tag/openstack.html">openstack</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/useful-linux-network-config.html" rel="bookmark" title="Permalink to Linux网络配置">Linux网络配置</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-13T20:20:00"> 六 13 九月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>Ubuntu停用Network Manager</h2>
-<p>Desktop版本的Ubuntu，使用Network Manager来进行网络管理，它会导致在<code>/etc/network/interface</code>中的设置不生效。由于在进行一些网络功能的开发时，需要用到<code>/etc/network/interface</code>文件管理网络，需要停用Network Manager。</p>
-<div class="highlight"><pre><span class="n">service</span> <span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="n">stop</span>
-</pre></div>
-
-
-<p>并向<code>/etc/network/interface</code>中写入具体的配置</p>
-<div class="highlight"><pre><span class="n">cat</span><span class="o">&gt;&gt;/</span><span class="n">etc</span><span class="o">/</span><span class="n">network</span><span class="o">/</span><span class="n">interface</span><span class="o">&lt;&lt;</span><span class="n">EOF</span>
-<span class="k">auto</span> <span class="n">eth0</span>
-<span class="n">iface</span> <span class="n">eth0</span> <span class="n">inet</span> <span class="k">static</span>
-<span class="n">address</span> <span class="mf">192 ...</span></pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/useful-linux-network-config.html" rel="bookmark" title="Permalink to Linux网络配置">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/linux.html">linux</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/useful-linux-commands.html" rel="bookmark" title="Permalink to 常用Linux命令">常用Linux命令</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-13T13:57:00"> 六 13 九月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。</p>
-<p><strong> shell中判断 </strong></p>
-<p>使用<code>if</code>进行判断</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="err">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
-    # Do something
-fi
-</pre></div>
-
-
-<p>包含多个分支，使用<code>if-elif</code></p>
-<div class="highlight"><pre><span class="k">if</span> <span class="err">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
-    # Do something
-elif <span class="cp">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
-    # Do somethin
-fi
-</pre></div>
-
-
-<p><strong> watch查看命令多次执行的结果 </strong></p>
-<p>watch能多次执行命令，并把命令的结果显示出来，支持每隔n秒执行一次命令，并把执行结果的差异显示。</p>
-<div class="highlight"><pre><span class="nx">watch</span> <span class="na">-n</span> <span class="o">&lt;</span><span class="nx">seconds</span><span class="o">&gt;</span> <span class="na">-d</span> <span class="o">&lt;</span><span class="nx">commands</span><span class="o">&gt;</span>
-</pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/useful-linux-commands.html" rel="bookmark" title="Permalink to 常用Linux命令">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/linux.html">linux</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/shell.html">shell</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/windowns-desktop-sharing-2.html" rel="bookmark" title="Permalink to Windows桌面共享2">Windows桌面共享2</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-01T23:20:00"> 一 01 九月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。</p>
-<p>我是使用C#来调用这个API的（本身是COM，可以由Visual Studio自动添加包装）。原型系统的代码分为服务器端（Sharer）和客户端（Attendee）,只是简单地把整个桌面全部共享出来。下面，是一些编程中的核心的内容。</p>
-<h2>Sharer端</h2>
-<p>在Sharer端，首先要引入API的COM，名称为<code>rdpcomapi 1.0 Type Library</code>，文件路径为<code>C:\Windows\System32\rdpencom.dll</code>。在引入的同时，Visual Studio会自动把这个COM进行包装，从而在项目的引用中可看到<code>RDPCOMAPILib</code>这个库，而查看其属性 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/windowns-desktop-sharing-2.html" rel="bookmark" title="Permalink to Windows桌面共享2">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/windows.html">windows</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/c.html">C#</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">使用virtualenv建立python开发环境</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-28T20:20:00"> 四 28 八月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>在python开发中，经常性需要安装一系列的依赖库。如果使用root用户安装到系统的python环境中，容易导致python目录越来越庞大。而后面更加麻烦的是，当开发完成之后，不知道该删除哪些依赖库了，因此也不敢删了。现在的Linux发行版中，各种组件对python环境的依赖很强，不小心删错了，绝对会让人追悔莫及！</p>
-<p>为此，我们绝对需要把我们的开发环境与系统的python环境隔离，让依赖库只在开发目录下存在，不会影响到系统python环境。使用virtualenv工具，可以轻易地帮助我们达成目的。</p>
-<!-- PELICAN_END_SUMMARY -->
-
-<p>virtualenv工具建立一个项目专用的python环境，在该环境中，有独立的<code>bin include lib local</code>等目录，里面会有一个单独的python环境。</p>
-<p>如果要在建立一个virtualenv环境(目录为.env)，使用命令：</p>
-<div class="highlight"><pre><span class="n">virtualenv</span> <span class="p">.</span><span class="n">env</span>
-</pre></div>
-
-
-<p>然后，使用命令：</p>
-<div class="highlight"><pre><span class="n">tree</span> <span class="o">-</span><span class="n">d</span> <span class="p">.</span><span class="n">env</span>
-</pre></div>
-
-
-<p>可以查看到整个目录的树结构</p>
-<div class="highlight"><pre><span class="err">├──</span> <span class="n">bin ...</span></pre></div></!--> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/virtualenv.html" rel="bookmark" title="Permalink to 使用virtualenv建立python开发环境">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/python.html">python</a>
 								</div>
 
 
