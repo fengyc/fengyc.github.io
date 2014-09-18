@@ -64,6 +64,32 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/install-rabbitvcs-in-ubuntu.html" rel="bookmark" title="Permalink to 在Ubuntu中安装RabbitVCS">在Ubuntu中安装RabbitVCS</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-18T15:56:00"> 四 18 九月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>RabbitVCS是Linux下的图形化版本管理软件，支持SVN/GIT，官网是<a href="http://www.rabbitvcs.org/">rabbitvcs.org</a>，PPA网站是<a href="https://launchpad.net/~rabbitvcs/+archive/ubuntu/ppa">rabbitvcs-ppa</a>。</p>
+<p>RabbitVCS的操作很像Windows下的小乌龟:-)，支持把操作集成到图形界面的右键菜单中，与TortoiseSVN是同样的，非常方便。</p>
+<p>安装的方法在PPA站点上有介绍，根据自己的系统的版本，把源加入到系统中，在14.04中，示例为：</p>
+<div class="highlight"><pre><span class="n">cat</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="p">.</span><span class="n">list</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rabbitvcs</span><span class="p">.</span><span class="n">list</span> <span class="o">&lt;&lt;</span><span class="n">EOF</span>
+<span class="n">deb</span> <span class="n">http</span><span class="o">:</span><span class="c1">//ppa.launchpad.net/rabbitvcs/ppa/ubuntu trusty main</span>
+<span class="n">EOF</span>
+</pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://fengyc.github.io/install-rabbitvcs-in-ubuntu.html" rel="bookmark" title="Permalink to 在Ubuntu中安装RabbitVCS">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
+											<a class="danger label" href="http://fengyc.github.io/tag/linux.html">linux</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/install-oracle-jdk-in-ubuntu.html" rel="bookmark" title="Permalink to 在Ubuntu中安装Oracle JDK">在Ubuntu中安装Oracle JDK</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-09-18T13:02:00"> 四 18 九月 2014 </abbr>
@@ -87,6 +113,30 @@
 											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
 											<a class="danger label" href="http://fengyc.github.io/tag/linux.html">linux</a>
 											<a class="danger label" href="http://fengyc.github.io/tag/java.html">java</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/using-keypair-connect-vm.html" rel="bookmark" title="Permalink to Openstack中使用Keypair连接到VM">Openstack中使用Keypair连接到VM</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-17T14:33:00"> 三 17 九月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>通常，系统的用户名和密码都是安装过程中指定的，然后通过安全的渠道交到最终使用者的手中。这种传统的方式在进行大规模的服务器管理时就非常麻烦，因为每台机器都需要指定用户名和密码，导致需要管理的密码数量非常庞大。如果需要更改密码，还需要逐个来修改！！</p>
+<p>在云计算中无法使用这种方式来管理虚拟机系统。镜像的开发者无法得知谁是最终的用户，最终用户无法确保开发者会不会用默认的用户名和密码来干坏事。</p>
+<p>因此，云计算普通会采用一种在系统第一次运行时把用户名密码注入到系统的办法，Openstack与Amazon的AWS都使用这样的办法来管理，但是不是通过用户名密码，而是通过一对密钥对。密钥对是用户自己生成的，可以在多台服务器上使用，用户使用私钥连接到各个服务器。</p>
+<p>在Openstack Dashboard上，生成一对KeyPair。公钥保存在Openstack上，私钥在生成时直接下载到用户本地。Openstack的私钥保存为一个.pem文件。</p>
+<p>密钥对生成之后，在启动实例时，为VM指定一个此密钥对。那么在VM初始化时，当网络初始化完成之后，安装在VM系统里面的初始化工具，向<code>169.254.169.254</code>这个特殊的IP地址，向Openstack请求VM的元数据（metadata ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://fengyc.github.io/using-keypair-connect-vm.html" rel="bookmark" title="Permalink to Openstack中使用Keypair连接到VM">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
+											<a class="danger label" href="http://fengyc.github.io/tag/openstack.html">openstack</a>
 								</div>
 
 
@@ -304,96 +354,6 @@ fi
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/useful-git-commands.html" rel="bookmark" title="Permalink to git常用命令">git常用命令</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-24T17:40:00"> 日 24 八月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>本文章记录了git的日常使用中的常用命令。
-<!-- PELICAN_END_SUMMARY --></p>
-<p><strong>下载远程仓库</strong></p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">clone</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p><strong>更新</strong>  </p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">pull</span>
-</pre></div>
-
-
-<p><strong>推送</strong></p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span>
-</pre></div>
-
-
-<p><strong>在本地工作目录指定远程仓库</strong></p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">remote</span> <span class="nb">add</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p><strong>取消本地修改</strong></p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">checkout</span> <span class="o">&lt;</span><span class="nb">FILE</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p><strong>查看远程仓库</strong><br />
-当git仓库clone到本地之后，如果忘记了具体的远程仓库地址，可通过以下的命令查看：</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">remove</span> <span class="o">-</span><span class="n">v</span>
-</pre></div>
-
-
-<p><strong>添加子模块</strong><br />
-当项目需要引用到其它git仓库时，使用子模块</p>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nx">submodule</span> <span class="nb">add</span> <span class="o">&lt;</span><span class="nb">URL</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p><strong>子模块初始化</strong>
-当一个git仓库被clone下来之后，子模块并不会被自动下载下来，使用下面的命令初始化各个子模块：</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">submodule ...</span></pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/useful-git-commands.html" rel="bookmark" title="Permalink to git常用命令">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/git.html">git</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/pelican-github-blog.html" rel="bookmark" title="Permalink to 利用pelican在github上搭建博客的办法">利用pelican在github上搭建博客的办法</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-22T20:20:00"> 五 22 八月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>发现能在github上搭建博客之后，经过一翻寻找之后，学会了使用pelican建立起整个博客系统。</p>
-<p>pelican使用python语言编写，支持markdown(.md)/reStructuredText(.rst)语法。对程序员而言，用它来编写博客内容是最好不过了，而且放在github上，也给人一种不明觉历的感觉:-)</p>
-<p>这篇文章记录在ubuntu 14.04下，使用pelican和github搭建博客的过程。</p>
-<!-- PELICAN_END_SUMMARY -->
-
-<h2>安装过程</h2>
-<p><strong>在github上建立博客项目</strong></p>
-<p>在github上建立一个账号，并建立一个公共项目，项目名为"账号.github.io"，不需要建立README等，保持项目为空白，如：
-    https://github.com/abc/fengyc.github.io</p>
-<p><strong>安装准备环境</strong></p>
-<div class="highlight"><pre><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y ...</span></pre></div></!--> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/pelican-github-blog.html" rel="bookmark" title="Permalink to 利用pelican在github上搭建博客的办法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/github.html">github</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/python.html">python</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -414,18 +374,18 @@ fi
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-2"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
-	    <li class="tag-2"><a href="http://fengyc.github.io/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/shell.html">shell</a></li>
+	    <li class="tag-3"><a href="http://fengyc.github.io/tag/openstack.html">openstack</a></li>
+	    <li class="tag-1"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/openstack.html">openstack</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/java.html">java</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
-	    <li class="tag-2"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
-	    <li class="tag-0"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-3"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
+	    <li class="tag-3"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
 </ul>
 
 
