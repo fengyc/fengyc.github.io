@@ -2,9 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>Zenmass - windows</title>
+        <title>在Ubuntu中安装Oracle JDK</title>
         <meta charset="utf-8" />
         <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Full Atom Feed" />
+        <link href="http://fengyc.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -53,74 +54,53 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-		         <ol id="post-list">
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/windowns-desktop-sharing-2.html" rel="bookmark" title="Permalink to Windows桌面共享2">Windows桌面共享2</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-01T23:20:00"> 一 01 九月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。</p>
-<p>我是使用C#来调用这个API的（本身是COM，可以由Visual Studio自动添加包装）。原型系统的代码分为服务器端（Sharer）和客户端（Attendee）,只是简单地把整个桌面全部共享出来。下面，是一些编程中的核心的内容。</p>
-<h2>Sharer端</h2>
-<p>在Sharer端，首先要引入API的COM，名称为<code>rdpcomapi 1.0 Type Library</code>，文件路径为<code>C:\Windows\System32\rdpencom.dll</code>。在引入的同时，Visual Studio会自动把这个COM进行包装，从而在项目的引用中可看到<code>RDPCOMAPILib</code>这个库，而查看其属性 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/windowns-desktop-sharing-2.html" rel="bookmark" title="Permalink to Windows桌面共享2">Read more <i class="icon-arrow-right"></i></a></div>
 
 
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/tech.html">tech</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/windows.html">windows</a>
-											<a class="danger label" href="http://fengyc.github.io/tag/c.html">C#</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://fengyc.github.io/windows-desktop-sharing.html" rel="bookmark" title="Permalink to Windows桌面共享">Windows桌面共享</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-29T21:00:00"> 五 29 八月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>最近在做一个windows桌面共享的项目，找了一系列的方法：</p>
-<p><strong>视频广播方式</strong></p>
-<p>视频广播方式可能是最具备跨平台特性的方式。在本地程序录制桌面的视频，或者基于硬件直接录制然后播放，然后实时发送到各个客户端。这种思想有很多的实现方式，而且整个结构很容易理解和扩展。</p>
-<p>录制的方式，总结了一下，找到下面的录制方式：</p>
-<ol>
-<li>windows GDI 截图</li>
-<li>directShow 直接录制</li>
-<li>mirror driver 或 mini port 驱动录制</li>
-<li>ffmpeg 录制 </li>
-</ol>
-<p>为了降低分享桌面的主机的负载，可以引入特定的视频广播服务器，由服务器进行视频转发。具体的协议可通过udp/rtsp等实现。</p>
-<p>这种方式具备与平台无关的特性，视频录制方式可随时扩展，而通过标准的接口把数据提交到转发服务器。但实现起来，需要做的工作也很多，需要理解基本的视频处理知识，实现一个良好的系统框架。</p>
-<p><strong>Windows Desktop Sharing ...</strong></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://fengyc.github.io/windows-desktop-sharing.html" rel="bookmark" title="Permalink to Windows桌面共享">Read more <i class="icon-arrow-right"></i></a></div>
+            <header>
+              <h2 class="entry-title">
+                <a href="http://fengyc.github.io/install-oracle-jdk-in-ubuntu.html" rel="bookmark"
+                   title="Permalink to 在Ubuntu中安装Oracle JDK">在Ubuntu中安装Oracle JDK</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-09-18T13:02:00">
+                四 18 九月 2014
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>尽管OpenJDK发展到现在已经能兼容绝大多数的标准Java应用场景，但是在某些微小的方面，仍然存在一点小问题。在Ubuntu中安装的Eclipse，使用OpenJDK时，使用内置的浏览器会有点问题，因此，我需要转换到Oracle的JDK。</p>
+<p>可以手工安装OracleJDK，比较烦琐。可以通过已打包好的PPA，进行安装：</p>
+<div class="highlight"><pre><span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="o">:</span><span class="n">webupd8team</span><span class="o">/</span><span class="n">java</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">oracle</span><span class="o">-</span><span class="n">java7</span><span class="o">-</span><span class="n">installer</span>
+</pre></div>
 
 
+<p>webupd8的官方网站为<a href="http://www.webupd8.org/">webupd8.org</a>。他们提供了一系列的软件包，见<a href="http://www.webupd8.org/p/ubuntu-ppas-by-webupd8.html">packages</a>。</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "install-oracle-jdk-in-ubuntu.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://zenmass.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
 
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://fengyc.github.io/tag/windows.html">windows</a>
-								</div>
-
-
-
-				        </article></li>
-				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -162,10 +142,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->
