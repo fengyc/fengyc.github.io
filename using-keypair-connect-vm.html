@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>Windows桌面共享</title>
+        <title>Openstack中使用Keypair连接到VM</title>
         <meta charset="utf-8" />
         <link href="http://fengyc.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Full Atom Feed" />
         <link href="http://fengyc.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Zenmass Categories Atom Feed" />
@@ -62,45 +62,31 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://fengyc.github.io/windows-desktop-sharing.html" rel="bookmark"
-                   title="Permalink to Windows桌面共享">Windows桌面共享</a></h2>
+                <a href="http://fengyc.github.io/using-keypair-connect-vm.html" rel="bookmark"
+                   title="Permalink to Openstack中使用Keypair连接到VM">Openstack中使用Keypair连接到VM</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-08-29T21:00:00">
-                五 29 八月 2014
+              <abbr class="published" title="2014-09-17T14:33:00">
+                三 17 九月 2014
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://fengyc.github.io/author/yingcai-feng.html">Yingcai FENG</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>最近在做一个windows桌面共享的项目，找了一系列的方法：</p>
-<p><strong>视频广播方式</strong></p>
-<p>视频广播方式可能是最具备跨平台特性的方式。在本地程序录制桌面的视频，或者基于硬件直接录制然后播放，然后实时发送到各个客户端。这种思想有很多的实现方式，而且整个结构很容易理解和扩展。</p>
-<p>录制的方式，总结了一下，找到下面的录制方式：</p>
-<ol>
-<li>windows GDI 截图</li>
-<li>directShow 直接录制</li>
-<li>mirror driver 或 mini port 驱动录制</li>
-<li>ffmpeg 录制 </li>
-</ol>
-<p>为了降低分享桌面的主机的负载，可以引入特定的视频广播服务器，由服务器进行视频转发。具体的协议可通过udp/rtsp等实现。</p>
-<p>这种方式具备与平台无关的特性，视频录制方式可随时扩展，而通过标准的接口把数据提交到转发服务器。但实现起来，需要做的工作也很多，需要理解基本的视频处理知识，实现一个良好的系统框架。</p>
-<p><strong>Windows Desktop Sharing</strong></p>
-<p>如果是只针对windows平台，通过windows desktop sharing，工作量可以减少很多。</p>
-<p>windows desktop sharing是基于rdp的一套API，提供非常简单快捷实现桌面共享的功能。根据在<a href="http://msdn.microsoft.com/en-us/library/bb968809.aspx" title="MSDN Windows Desktop Sharing">MSDN</a>上的介绍，这个功能是微软从Vista开始提供的功能，而且在<a href="http://blogs.msdn.com/b/rds/archive/2007/03/08/windows-desktop-sharing-api.aspx" title="Remote Desktop Service Blog">BLOG</a>中提到，这个功能是微软的 "Windows Meeting Space" 和 "Remote Assistance" 的基础。</p>
-<p>目前粗略看了一下MSDN上的介绍，它的核心对象就是RDPSession和RDPViewer两个，其它的操作在这两个对象的基础上进行。</p>
-<p>除了支持桌面共享，这个API还支持很多有意思的功能，比较连接反转（Reverse Connect）、应用程序窗口共享、虚拟通道等等。</p>
-<p>目前准备使用Windows Desktop Sharing来实现一个系统原型，评测一下效果。</p>
-<hr />
-<p>Yingcai FENG</p>
+              <p>通常，系统的用户名和密码都是安装过程中指定的，然后通过安全的渠道交到最终使用者的手中。这种传统的方式在进行大规模的服务器管理时就非常麻烦，因为每台机器都需要指定用户名和密码，导致需要管理的密码数量非常庞大。如果需要更改密码，还需要逐个来修改！！</p>
+<p>在云计算中无法使用这种方式来管理虚拟机系统。镜像的开发者无法得知谁是最终的用户，最终用户无法确保开发者会不会用默认的用户名和密码来干坏事。</p>
+<p>因此，云计算普通会采用一种在系统第一次运行时把用户名密码注入到系统的办法，Openstack与Amazon的AWS都使用这样的办法来管理，但是不是通过用户名密码，而是通过一对密钥对。密钥对是用户自己生成的，可以在多台服务器上使用，用户使用私钥连接到各个服务器。</p>
+<p>在Openstack Dashboard上，生成一对KeyPair。公钥保存在Openstack上，私钥在生成时直接下载到用户本地。Openstack的私钥保存为一个.pem文件。</p>
+<p>密钥对生成之后，在启动实例时，为VM指定一个此密钥对。那么在VM初始化时，当网络初始化完成之后，安装在VM系统里面的初始化工具，向<code>169.254.169.254</code>这个特殊的IP地址，向Openstack请求VM的元数据（metadata），元数据中包含了VM的密钥对中的公钥。然后，初始化工具把此公钥安装到<code>/root/.ssh/authorized_keys</code>中。</p>
+<p>putty可以使用私钥登录到VM上，但需要做一点工作。putty使用的私钥文件格式是<code>.ppk</code>，需要把<code>.pem</code>文件转换为<code>.ppk</code>文件。使用puttygen这个图形化工具，转换的工作十分简单，见<a href="http://winscp.net/eng/docs/ui_puttygen">winscp-puttygen</a>。</p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "windows-desktop-sharing.html";
+                var disqus_identifier = "using-keypair-connect-vm.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://zenmass.disqus.com/embed.js';
