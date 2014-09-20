@@ -80,7 +80,7 @@
 &lt;p&gt;如果需要临时修改DNS配置，也可以直接把DNS写入到&lt;code&gt;resolv.conf&lt;/code&gt;中，如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;nameserver&lt;/span&gt; &lt;span class="mf"&gt;8.8.4.4&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;resolv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sat, 13 Sep 2014 20:20:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-13:useful-linux-network-config.html</guid><category>tech</category><category>linux</category></item><item><title>常用Linux命令</title><link>http://fengyc.github.io/useful-linux-commands.html</link><description>&lt;p&gt;本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; shell中判断 &lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;shell中判断&lt;/h2&gt;
 &lt;p&gt;使用&lt;code&gt;if&lt;/code&gt;进行判断&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;condition&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="cp"&gt;]&lt;/span&gt;; then
     # Do something
@@ -97,9 +97,37 @@ fi
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt; watch查看命令多次执行的结果 &lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;watch查看命令多次执行的结果&lt;/h2&gt;
 &lt;p&gt;watch能多次执行命令，并把命令的结果显示出来，支持每隔n秒执行一次命令，并把执行结果的差异显示。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;watch&lt;/span&gt; &lt;span class="na"&gt;-n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="na"&gt;-d&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;tar压缩打包&lt;/h2&gt;
+&lt;p&gt;常用的tar参数包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-c&lt;/code&gt; 创建包&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-x&lt;/code&gt; 解包&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 显示处理的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-z&lt;/code&gt; gzip格式&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-j&lt;/code&gt; bzip2格式&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 文档名，后面应立即使用包文档路径参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xvf&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
+&lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;zcvf&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;  &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jcvf&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bz2&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;scp远程拷贝&lt;/h2&gt;
+&lt;p&gt;为了把远程服务器上的内容拷贝下来，首先需要在远程服务器上安装ssh服务，然后在本地使用&lt;code&gt;scp&lt;/code&gt;命令通过ssh把内容拷贝下来。&lt;code&gt;scp&lt;/code&gt;命令与&lt;code&gt;cp&lt;/code&gt;的操作类似：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;scp&lt;/span&gt; &lt;span class="na"&gt;-r&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;username&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;server&lt;/span&gt;&lt;span class="p"&gt;:/&lt;/span&gt;&lt;span class="nx"&gt;server_path&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;local_path&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中&lt;code&gt;-r&lt;/code&gt;表示recursive，用于拷贝目录。需要把本地内容拷贝到服务器，则把两个路径调换位置：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;scp&lt;/span&gt; &lt;span class="na"&gt;-r&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;localpath&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;username&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;server&lt;/span&gt;&lt;span class="p"&gt;:/&lt;/span&gt;&lt;span class="nx"&gt;server_path&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Yingcai FENG</dc:creator><pubDate>Sat, 13 Sep 2014 13:57:00 +0800</pubDate><guid>tag:fengyc.github.io,2014-09-13:useful-linux-commands.html</guid><category>tech</category><category>linux</category><category>shell</category></item><item><title>Windows桌面共享2</title><link>http://fengyc.github.io/windowns-desktop-sharing-2.html</link><description>&lt;p&gt;经过一天的尝试，使用Windows Desktop Sharing API写了一点原型代码，并运行起来查看效果。&lt;/p&gt;
 &lt;p&gt;我是使用C#来调用这个API的（本身是COM，可以由Visual Studio自动添加包装）。原型系统的代码分为服务器端（Sharer）和客户端（Attendee）,只是简单地把整个桌面全部共享出来。下面，是一些编程中的核心的内容。&lt;/p&gt;
 &lt;h2&gt;Sharer端&lt;/h2&gt;

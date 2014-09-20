@@ -76,7 +76,7 @@
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <p>本文整理一些常用的Linux命令，以及shell编程中使用到常用语句。</p>
-<p><strong> shell中判断 </strong></p>
+<h2>shell中判断</h2>
 <p>使用<code>if</code>进行判断</p>
 <div class="highlight"><pre><span class="k">if</span> <span class="err">[</span> <span class="o">&lt;</span><span class="nx">condition</span><span class="o">&gt;</span> <span class="cp">]</span>; then
     # Do something
@@ -93,9 +93,37 @@ fi
 </pre></div>
 
 
-<p><strong> watch查看命令多次执行的结果 </strong></p>
+<h2>watch查看命令多次执行的结果</h2>
 <p>watch能多次执行命令，并把命令的结果显示出来，支持每隔n秒执行一次命令，并把执行结果的差异显示。</p>
 <div class="highlight"><pre><span class="nx">watch</span> <span class="na">-n</span> <span class="o">&lt;</span><span class="nx">seconds</span><span class="o">&gt;</span> <span class="na">-d</span> <span class="o">&lt;</span><span class="nx">commands</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h2>tar压缩打包</h2>
+<p>常用的tar参数包括：</p>
+<ul>
+<li><code>-c</code> 创建包</li>
+<li><code>-x</code> 解包</li>
+<li><code>-v</code> 显示处理的文件</li>
+<li><code>-z</code> gzip格式</li>
+<li><code>-j</code> bzip2格式</li>
+<li><code>-f</code> 文档名，后面应立即使用包文档路径参数</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">a</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zcvf</span> <span class="n">a</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>  <span class="n">a</span><span class="o">/</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">jcvf</span> <span class="n">a</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span> <span class="n">a</span><span class="o">/</span>
+</pre></div>
+
+
+<h2>scp远程拷贝</h2>
+<p>为了把远程服务器上的内容拷贝下来，首先需要在远程服务器上安装ssh服务，然后在本地使用<code>scp</code>命令通过ssh把内容拷贝下来。<code>scp</code>命令与<code>cp</code>的操作类似：</p>
+<div class="highlight"><pre><span class="nx">scp</span> <span class="na">-r</span> <span class="o">&lt;</span><span class="nx">username</span><span class="p">@</span><span class="nx">server</span><span class="p">:/</span><span class="nx">server_path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">local_path</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>其中<code>-r</code>表示recursive，用于拷贝目录。需要把本地内容拷贝到服务器，则把两个路径调换位置：</p>
+<div class="highlight"><pre><span class="nx">scp</span> <span class="na">-r</span> <span class="o">&lt;</span><span class="nx">localpath</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">username</span><span class="p">@</span><span class="nx">server</span><span class="p">:/</span><span class="nx">server_path</span><span class="o">&gt;</span>
 </pre></div>
             </div><!-- /.entry-content -->
             <div class="comments">
@@ -130,18 +158,18 @@ fi
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/shell.html">shell</a></li>
-	    <li class="tag-3"><a href="http://fengyc.github.io/tag/openstack.html">openstack</a></li>
-	    <li class="tag-1"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/about.html">about</a></li>
-	    <li class="tag-2"><a href="http://fengyc.github.io/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/shell.html">shell</a></li>
 	    <li class="tag-4"><a href="http://fengyc.github.io/tag/java.html">java</a></li>
-	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/github.html">github</a></li>
+	    <li class="tag-2"><a href="http://fengyc.github.io/tag/linux.html">linux</a></li>
+	    <li class="tag-1"><a href="http://fengyc.github.io/tag/tech.html">tech</a></li>
+	    <li class="tag-3"><a href="http://fengyc.github.io/tag/openstack.html">openstack</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/blog.html">blog</a></li>
 	    <li class="tag-3"><a href="http://fengyc.github.io/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/git.html">git</a></li>
 	    <li class="tag-3"><a href="http://fengyc.github.io/tag/windows.html">windows</a></li>
+	    <li class="tag-4"><a href="http://fengyc.github.io/tag/c.html">C#</a></li>
 </ul>
 
 
