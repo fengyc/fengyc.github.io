@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-18T15:56:00+08:00</updated><entry><title>在Ubuntu中安装RabbitVCS</title><link href="http://fengyc.github.io/install-rabbitvcs-in-ubuntu.html" rel="alternate"></link><updated>2014-09-18T15:56:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-18:install-rabbitvcs-in-ubuntu.html</id><summary type="html">&lt;p&gt;RabbitVCS是Linux下的图形化版本管理软件，支持SVN/GIT，官网是&lt;a href="http://www.rabbitvcs.org/"&gt;rabbitvcs.org&lt;/a&gt;，PPA网站是&lt;a href="https://launchpad.net/~rabbitvcs/+archive/ubuntu/ppa"&gt;rabbitvcs-ppa&lt;/a&gt;。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Zenmass</title><link href="http://fengyc.github.io/" rel="alternate"></link><link href="http://fengyc.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://fengyc.github.io/</id><updated>2014-09-20T15:20:00+08:00</updated><entry><title>在Ubuntu中安装WPS</title><link href="http://fengyc.github.io/install-wps-in-ubuntu.html" rel="alternate"></link><updated>2014-09-20T15:20:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-20:install-wps-in-ubuntu.html</id><summary type="html">&lt;p&gt;WPS的官网上已经提供了.deb安装包，但是只有32位的版本，目前还没有64位的版本。现在的电脑配置基本上都超4G内存了，使用64位的系统才能更好地利用更多内存，现在的Linux大部分都使用64位了。尽管WPS还没有推出64位的版本，但能在Linux上发行，已经是很大的进步。&lt;/p&gt;
+&lt;p&gt;64位的系统要安装32位的软件，还需要动动脑筋。原来Ubuntu是提供一个&lt;code&gt;ia32-libs&lt;/code&gt;安装包，把32位系统所需要的软件包都一起装了。在14.04上，并没有在官方的源中找到这个包。&lt;/p&gt;
+&lt;p&gt;然而，尝试了一下之后，发现还是能把WPS装上。过程如下：&lt;/p&gt;
+&lt;p&gt;首先，到&lt;a href="http://community.wps.cn/download/"&gt;wps&lt;/a&gt;网站上下载wps，我下载了&lt;code&gt;wps-office_9.1.0.4751~a15_i386.deb&lt;/code&gt;。并下载字体包 &lt;code&gt;wps-office-fonts_1.0_all.deb&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;现在，开启32位支持：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;dpkg&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;architecture&lt;/span&gt; &lt;span class="n"&gt;i386&lt;/span&gt;
+&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后，直接尝试安装WPS：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;dpkg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;wps&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;office_9&lt;/span&gt;&lt;span class="mf"&gt;.1.0.4751&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="n"&gt;a15_i386&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deb&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;安装过程会报错，但是WPS还是安装了，然后用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会把WPS依赖的32位的软件包安装上去。那么，继续安装字体包：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;dpkg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;wps&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;office&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fonts_1&lt;/span&gt;&lt;span class="mf"&gt;.0&lt;/span&gt;&lt;span class="n"&gt;_all&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deb&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;完成后，就可以使用WPS了。&lt;/p&gt;</summary><category term="blog"></category></entry><entry><title>在Ubuntu中安装RabbitVCS</title><link href="http://fengyc.github.io/install-rabbitvcs-in-ubuntu.html" rel="alternate"></link><updated>2014-09-18T15:56:00+08:00</updated><author><name>Yingcai FENG</name></author><id>tag:fengyc.github.io,2014-09-18:install-rabbitvcs-in-ubuntu.html</id><summary type="html">&lt;p&gt;RabbitVCS是Linux下的图形化版本管理软件，支持SVN/GIT，官网是&lt;a href="http://www.rabbitvcs.org/"&gt;rabbitvcs.org&lt;/a&gt;，PPA网站是&lt;a href="https://launchpad.net/~rabbitvcs/+archive/ubuntu/ppa"&gt;rabbitvcs-ppa&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;RabbitVCS的操作很像Windows下的小乌龟:-)，支持把操作集成到图形界面的右键菜单中，与TortoiseSVN是同样的，非常方便。&lt;/p&gt;
 &lt;p&gt;安装的方法在PPA站点上有介绍，根据自己的系统的版本，把源加入到系统中，在14.04中，示例为：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sources&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rabbitvcs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;EOF&lt;/span&gt;
