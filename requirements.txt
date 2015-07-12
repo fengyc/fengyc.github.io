@@ -1,0 +1,5 @@
+--find-links=http://pypi.douban.com
+
+pelican
+Markdown
+ghp-import

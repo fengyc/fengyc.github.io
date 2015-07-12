@@ -1,12 +1,26 @@
 #!/bin/bash
 
+set -e
+
 CUR_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$CUR_DIR"
-if [ ! -e "$CUR_DIR/.env/bin/activate" ]; then
-	virtualenv "$CUR_DIR/.env"
+
+# install pip
+! which pip > /dev/null && sudo apt-get install python-pip
+
+# install virtuanenv
+! which virtualenv > /dev/null && sudo apt-get install python-virtualenv
+
+# create virtual environment
+if [ ! -e "$CUR_DIR/.venv/bin/activate" ]; then
+	virtualenv -p python3 "$CUR_DIR/.venv"
 	if [ "$?" != "0" ]; then
 		echo "Could not locate virtualenv"
 		exit 1
 	fi
 fi
-source "$CUR_DIR/.env/bin/activate"
+
+# active virtual environmemt
+source "$CUR_DIR/.venv/bin/activate"
+
+set +e
